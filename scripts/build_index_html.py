@@ -87,13 +87,18 @@ html_content = f'''<!DOCTYPE html>
           <div class="hero-copy">
             <h1 class="hero-title">Better call us</h1>
             <p class="hero-desc">
-              Aplha cube is a full-stack development agency, that goes beyond just delivering the product and actually looking after it post-deployment.
+              Alpha cube is a full-stack engineering agency for founders and growing companies. We build high-throughput web applications and resilient backends, then stay on call 24/7 post-deployment.
             </p>
             <div class="hero-cta-wrap">
               <a href="#contact" class="btn-get-in-touch" id="hero-cta">
                 <span class="btn-label">Get in touch</span>
                 <img src="assets/btn-squiggly.svg" alt="" class="btn-squiggly" aria-hidden="true">
               </a>
+            </div>
+            <div class="hero-trust-bar">
+              <span class="trust-item"><span class="trust-bullet" aria-hidden="true"></span> 50+ Web apps delivered</span>
+              <span class="trust-item"><span class="trust-bullet" aria-hidden="true"></span> 99.99% Production uptime</span>
+              <span class="trust-item"><span class="trust-bullet" aria-hidden="true"></span> 15-Min midnight response</span>
             </div>
           </div>
 
@@ -226,7 +231,7 @@ html_content = f'''<!DOCTYPE html>
               <img src="assets/card-border-1.svg" alt="" class="card-squiggly-border" aria-hidden="true">
               <div class="story-card-content">
                 <blockquote class="story-quote">
-                  "The website they designed for us totally exceeded our expectiatons."
+                  "The website they designed for us totally exceeded our expectations."
                 </blockquote>
                 <div class="story-author">
                   <div class="author-circle" aria-hidden="true"></div>
@@ -305,27 +310,44 @@ html_content = f'''<!DOCTYPE html>
     </main>
 
     <!-- Contact Dialog Modal -->
-    <dialog id="contact-dialog" class="contact-modal">
+    <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading">
       <div class="modal-box">
         <button id="close-modal" class="close-btn" aria-label="Close dialog">&times;</button>
-        <h3 class="modal-title">Get in touch with Alpha cube</h3>
-        <p class="modal-sub">Tell us about your project or system. We reply within a few hours.</p>
+        <div id="modal-form-view">
+          <h3 id="modal-heading" class="modal-title">Get in touch with Alpha cube</h3>
+          <p class="modal-sub">Direct line to our lead engineers. We evaluate your stack and reply within 4 hours.</p>
 
-        <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent! We will reach out shortly.'); this.closest('dialog').close();">
-          <label>
-            <span>Your Name</span>
-            <input type="text" name="name" required placeholder="Santhanam">
-          </label>
-          <label>
-            <span>Email Address</span>
-            <input type="email" name="email" required placeholder="you@domain.com">
-          </label>
-          <label>
-            <span>Project Details</span>
-            <textarea name="message" rows="4" required placeholder="What are you building? How can we help?"></textarea>
-          </label>
-          <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+          <form class="contact-form" id="contact-form">
+            <label>
+              <span>Your Name</span>
+              <input type="text" name="name" required placeholder="Santhanam" autocomplete="name">
+            </label>
+            <label>
+              <span>Email Address</span>
+              <input type="email" name="email" required placeholder="you@domain.com" autocomplete="email">
+            </label>
+            <label>
+              <span>Project Details</span>
+              <textarea name="message" rows="4" required placeholder="What are you building or debugging? How can we help?"></textarea>
+            </label>
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span class="btn-text">Send Message</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+
+        <div id="modal-success-view" class="modal-success-view" style="display: none;">
+          <div class="success-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#00D17C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3 class="modal-title">Message Received</h3>
+          <p class="modal-sub">Jayadithya or Gurubaravikkram will review your requirements and reach out within 4 hours.</p>
+          <button type="button" class="submit-btn" id="close-success-btn">Done</button>
+        </div>
       </div>
     </dialog>
   </div>

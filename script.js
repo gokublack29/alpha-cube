@@ -63,40 +63,66 @@
     }
   }
 
-  if (prevBtn && nextBtn && cards.length > 1) {
-    prevBtn.addEventListener('click', () => {
-      activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-      updateTestimonialView();
+  function goToTestimony(index) {
+    activeIndex = (index + cards.length) % cards.length;
+    updateTestimonialView();
+    if (cards[activeIndex]) {
       cards[activeIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
+    }
+  }
 
-    nextBtn.addEventListener('click', () => {
-      activeIndex = (activeIndex + 1) % cards.length;
-      updateTestimonialView();
-      cards[activeIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  if (prevBtn && nextBtn && cards.length > 1) {
+    prevBtn.addEventListener('click', () => goToTestimony(activeIndex - 1));
+    nextBtn.addEventListener('click', () => goToTestimony(activeIndex + 1));
+
+    // Keyboard navigation when focusing carousel controls
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement === prevBtn || document.activeElement === nextBtn) {
+        if (e.key === 'ArrowLeft') goToTestimony(activeIndex - 1);
+        if (e.key === 'ArrowRight') goToTestimony(activeIndex + 1);
+      }
     });
 
     window.addEventListener('resize', updateTestimonialView);
     updateTestimonialView();
   }
 
-  // --- Contact Dialog ---
+  // --- Contact Dialog & Form Handling ---
   const contactDialog = document.getElementById('contact-dialog');
   const closeModalBtn = document.getElementById('close-modal');
+  const closeSuccessBtn = document.getElementById('close-success-btn');
   const heroCta = document.getElementById('hero-cta');
+  const contactForm = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const formView = document.getElementById('modal-form-view');
+  const successView = document.getElementById('modal-success-view');
 
-  if (contactDialog && heroCta) {
+  function openDialog() {
+    if (!contactDialog) return;
+    if (formView && successView) {
+      formView.style.display = 'block';
+      successView.style.display = 'none';
+    }
+    if (contactForm) contactForm.reset();
+    if (submitBtn) submitBtn.classList.remove('loading');
+    contactDialog.showModal();
+  }
+
+  function closeDialog() {
+    if (contactDialog) contactDialog.close();
+  }
+
+  if (heroCta) {
     heroCta.addEventListener('click', (e) => {
       e.preventDefault();
-      contactDialog.showModal();
+      openDialog();
     });
   }
 
-  if (closeModalBtn && contactDialog) {
-    closeModalBtn.addEventListener('click', () => {
-      contactDialog.close();
-    });
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeDialog);
+  if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeDialog);
 
+  if (contactDialog) {
     contactDialog.addEventListener('click', (e) => {
       const rect = contactDialog.getBoundingClientRect();
       const isInDialog = (
@@ -106,8 +132,22 @@
         e.clientX <= rect.left + rect.width
       );
       if (!isInDialog) {
-        contactDialog.close();
+        closeDialog();
       }
+    });
+  }
+
+  if (contactForm && submitBtn && formView && successView) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.classList.add('loading');
+
+      // Feedback animation (<400ms)
+      setTimeout(() => {
+        submitBtn.classList.remove('loading');
+        formView.style.display = 'none';
+        successView.style.display = 'block';
+      }, 350);
     });
   }
 })();
