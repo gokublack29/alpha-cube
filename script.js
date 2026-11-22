@@ -79,9 +79,11 @@
   const submitBtn = document.getElementById('submit-btn');
   const formView = document.getElementById('modal-form-view');
   const successView = document.getElementById('modal-success-view');
+  let lastActiveElement = null;
 
   function openModal() {
     if (!modal) return;
+    lastActiveElement = document.activeElement;
     if (formView && successView) {
       formView.style.display = 'block';
       successView.style.display = 'none';
@@ -89,10 +91,15 @@
     if (form) form.reset();
     if (submitBtn) submitBtn.classList.remove('loading');
     modal.showModal();
+    const nameInput = document.getElementById('contact-name');
+    if (nameInput) nameInput.focus();
   }
 
   function closeModal() {
     if (modal) modal.close();
+    if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+      lastActiveElement.focus();
+    }
   }
 
   triggerBtns.forEach(btn => {

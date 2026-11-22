@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="site-shell">
     <!-- Navigation -->
     <header class="site-header">
@@ -277,7 +278,7 @@
         <div class="founders-stage">
           <div class="founders-media">
             <div class="founders-backdrop" aria-hidden="true"></div>
-            <img src="assets/team-dark.png" alt="Alpha cube founders Jayadithya and Gurubaravikkram" class="founders-photo" width="920" height="560">
+            <img src="assets/team-dark.png" alt="Alpha cube founders Jayadithya, Gurubaravikkram, Dinesh Kumar, and Hemanth" class="founders-photo" width="920" height="560" loading="lazy">
           </div>
 
           <div class="founders-roster">
@@ -429,7 +430,7 @@
 
           <div class="closing-content-grid">
             <div class="closing-performer">
-              <img src="assets/anirudh.png" alt="High energy Alpha cube team" class="performer-img" width="380" height="520">
+              <img src="assets/anirudh.png" alt="High energy Alpha cube team" class="performer-img" width="380" height="520" loading="lazy">
             </div>
 
             <div class="closing-interaction">
@@ -483,10 +484,10 @@
   </div>
 
   <!-- Contact Modal -->
-  <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading">
+  <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading" aria-modal="true">
     <div class="modal-card">
       <button id="close-modal" class="modal-close-btn" aria-label="Close dialog">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -502,12 +503,12 @@
         <form id="contact-form" class="modal-form">
           <div class="form-group">
             <label for="contact-name" class="form-label">Full Name</label>
-            <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Rivera" required>
+            <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Rivera" autocomplete="name" required>
           </div>
 
           <div class="form-group">
             <label for="contact-email" class="form-label">Work Email</label>
-            <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@company.com" required>
+            <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@company.com" autocomplete="email" required>
           </div>
 
           <div class="form-group">
