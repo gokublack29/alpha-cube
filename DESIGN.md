@@ -56,6 +56,14 @@ Sections maintain generous vertical breathing room between 80px and 120px.
 Cards use asymmetric bento proportions to convey engineering breadth without repetitive icon-box templates.
 Images use transparent alpha masks to blend into both dark and light canvases.
 
+## Founding Engineering Team
+
+The founding group consists of four technical disciplines.
+Jayadithya leads distributed systems architecture and emergency incident triage.
+Gurubaravikkram oversees client strategy, cloud scaling, and service level agreements.
+Dinesh Kumar directs clientside architecture, component systems, and performance tuning.
+Hemanth leads containerized infrastructure, automated pipelines, and cloud reliability.
+
 ## Microinteractions and Accessibility
 
 Interactive elements deliver feedback within 100 milliseconds.
