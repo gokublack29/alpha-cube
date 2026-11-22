@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Geist+Mono:wght@400;500;600&family=Saira:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -37,9 +37,9 @@
             }
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            serif: ['Playfair Display', 'Georgia', 'serif'],
-            comic: ['Bangers', 'Impact', 'sans-serif'],
+            pixel: ['"Geist Pixel"', 'monospace'],
+            sans: ['Saira', 'system-ui', 'sans-serif'],
+            mono: ['"Geist Mono"', 'monospace'],
           }
         }
       }
@@ -67,25 +67,26 @@
 
         <div class="header-controls">
           <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark and light theme" title="Toggle theme">
-            <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            <svg class="sun-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M13 22h-2v-3h2v3Zm-6-3H5v-2h2v2Zm12 0h-2v-2h2v2Zm-4-2H9v-2h6v2Zm-6-2H7V9h2v6Zm8 0h-2V9h2v6ZM5 13H2v-2h3v2Zm17 0h-3v-2h3v2Zm-7-4H9V7h6v2ZM7 7H5V5h2v2Zm12 0h-2V5h2v2Zm-6-2h-2V2h2v3Z"/>
             </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            <svg class="moon-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M18 22H8v-2h10v2ZM8 20H6v-2h2v2Zm12 0h-2v-2h2v2ZM6 18H4v-2h2v2Zm16 0h-2v-4h-2v-2h2v-2h2v8ZM4 16H2V6h2v10Zm14 0h-6v-2h6v2Zm-6-2h-2v-2h2v2Zm-2-2H8V6h2v6ZM6 6H4V4h2v2Zm8-2h-2v2h-2V4H6V2h8v2Z"/>
             </svg>
           </button>
-          <button class="btn-primary header-cta trigger-modal">Start a Project</button>
+          <button class="btn-primary header-cta trigger-modal">
+            <span>Start a Project</span>
+            <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+              <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
+            </svg>
+          </button>
           <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span class="hamburger-line" aria-hidden="true"></span>
-            <span class="hamburger-line" aria-hidden="true"></span>
+            <svg class="menu-open-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M20 18H4v-2h16v2Zm0-5H4v-2h16v2Zm0-5H4V6h16v2Z"/>
+            </svg>
+            <svg class="menu-close-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M7 19H5V17H7V19ZM19 19H17V17H19V19ZM9 15V17H7V15H9ZM17 17H15V15H17V17ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM13 13H11V11H13V13ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM9 9H7V7H9V9ZM17 9H15V7H17V9ZM7 7H5V5H7V7ZM19 7H17V5H19V7Z"/>
+            </svg>
           </button>
         </div>
       </div>
@@ -114,7 +115,12 @@
             </p>
 
             <div class="hero-actions">
-              <button class="btn-primary btn-large trigger-modal">Start a Project</button>
+              <button class="btn-primary btn-large trigger-modal">
+                <span>Start a Project</span>
+                <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                  <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
+                </svg>
+              </button>
               <a href="#services" class="btn-secondary btn-large">See Our Capabilities</a>
             </div>
 
@@ -168,10 +174,8 @@
             <div class="tile-content">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M4 2h16v2H4zm0 14h16v2H4zM2 4h2v12H2zm18 0h2v12h-2zm-9 14h2v2h-2zm-3 2h8v2H8z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">Frontend & Client Core</span>
@@ -193,11 +197,8 @@
             <div class="tile-content">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                    <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                    <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M6 7h4v2H6zm0 8h4v2H6zM2 5h2v14H2zm18 0h2v14h-2zM4 19h16v2H4zM4 3h16v2H4zm0 8h16v2H4z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">Backend Systems</span>
@@ -220,9 +221,8 @@
             <div class="tile-content">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"></path>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 14H7v6H5v-6H2v-2h6v2Zm5 6h-2V10h2v10Zm9-2h-3v2h-2v-2h-1v-2h6v2Zm-3-4h-2V4h2v10ZM7 10H5V4h2v6Zm6-4h2v2H9V6h2V4h2v2Z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">Design Systems</span>
@@ -244,8 +244,8 @@
             <div class="tile-content">
               <div class="tile-header">
                 <div class="tile-icon-box box-accent">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M4 13h8v6h2v2h-2v2h-2v-8H2v-4h2v2Zm12 6h-2v-2h2v2Zm2-2h-2v-2h2v2Zm2-2h-2v-2h2v2Zm-6-6h8v4h-2v-2h-8V5h-2V3h2V1h2v8Zm-8 2H4V9h2v2Zm2-2H6V7h2v2Zm2-2H8V5h2v2Z"/>
                   </svg>
                 </div>
                 <span class="tile-tag tag-alert">Rapid Response</span>
@@ -277,8 +277,8 @@
             <div class="tile-content">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M4 2h16v2H4zM2 4h2v10H2zm18 0h2v10h-2zM4 14h2v2H4zm2 2h2v2H6zm4 4h4v2h-4zm10-6h-2v2h2zm-2 2h-2v2h2zm-2 2h-2v2h2zm-6 0H8v2h2z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">Ongoing Care</span>
@@ -299,9 +299,8 @@
             <div class="tile-content">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                    <path d="M11 18H9v-4h2v4Zm-4-1H5v-2h2v2Zm12-2v2h-2v-2h2ZM5 15H3v-2h2v2Zm16 0h-2v-2h2v2Zm-8-1h-2v-4h2v4ZM3 13H1v-2h2v2Zm20 0h-2v-2h2v2ZM5 11H3V9h2v2Zm16 0h-2V9h2v2Zm-6-1h-2V6h2v4ZM7 9H5V7h2v2Zm12 0h-2V7h2v2Z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">DevOps & Cloud</span>
@@ -419,20 +418,20 @@
           </div>
           <div class="carousel-nav" aria-label="Client testimonials navigation">
             <button id="prev-story" class="carousel-btn" aria-label="Previous story">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="15 18 9 12 15 6"></polyline>
+              <svg class="pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                <path d="M8 13v-2h2v2H8Zm2-2V9h2v2h-2Zm0 4v-2h2v2h-2Zm2-6V7h2v2h-2Zm0 8v-2h2v2h-2Zm2-10V5h2v2h-2Zm0 12v-2h2v2h-2Z"/>
               </svg>
             </button>
             <button id="next-story" class="carousel-btn" aria-label="Next story">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"></polyline>
+              <svg class="pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                <path d="M16 13v-2h-2v2h2Zm-2-2V9h-2v2h2Zm0 4v-2h-2v2h2Zm-2-6V7h-2v2h2Zm0 8v-2h-2v2h2ZM10 7V5H8v2h2Zm0 12v-2H8v2h2Z"/>
               </svg>
             </button>
           </div>
         </div>
 
         <div class="stories-track" id="stories-slider">
-          <!-- Story 1: Priya -->
+          <!-- Story 1: Nandhini -->
           <article class="story-panel active" data-story="0">
             <div class="story-inner">
               <div class="story-rating">
@@ -442,9 +441,9 @@
                 "The web platform Alpha cube engineered completely exceeded what our board expected. The codebase is clean, page transitions render in milliseconds, and they launched our portal two weeks ahead of schedule."
               </blockquote>
               <div class="story-client">
-                <div class="client-avatar" aria-hidden="true">P</div>
+                <div class="client-avatar" aria-hidden="true">N</div>
                 <div class="client-info">
-                  <span class="client-name">Priya</span>
+                  <span class="client-name">Nandhini</span>
                   <span class="client-location">Founder &middot; Chennai</span>
                 </div>
               </div>
@@ -497,17 +496,21 @@
               </p>
 
               <div class="direct-contact-actions">
-                <button class="btn-primary btn-large trigger-modal">Start a Project</button>
+                <button class="btn-primary btn-large trigger-modal">
+                  <span>Start a Project</span>
+                  <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                    <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
+                  </svg>
+                </button>
                 <a href="mailto:convinceyoucoo16@gmail.com" class="direct-pill-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                    <path d="M6 8h2v2H6zm2 2h2v2H8zm10-2h-2v2h2zm-2 2h-2v2h2zm-6 2h4v2h-4zM2 6h2v12H2zm18 0h2v12h-2zM4 4h16v2H4zm0 14h16v2H4z"/>
                   </svg>
                   <span>Mail Us</span>
                 </a>
                 <a href="tel:+919876543210" class="direct-pill-btn">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  <svg class="pixel-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                    <path d="M4 1h5v2H4zm5 2h2v4H9zM7 7h2v4H7zm-3 5h2v2H4zM2 3h2v9H2zm7 8h2v2H9zm2 2h2v2h-2zm2 2h4v2h-4zm4-2h4v2h-4zm4 2h2v5h-2zM6 14h2v2H6zm2 2h2v2H8zm2 2h2v2h-2zm2 2h9v2h-9z"/>
                   </svg>
                   <span>Call Us</span>
                 </a>
@@ -540,9 +543,8 @@
   <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading" aria-modal="true">
     <div class="modal-card">
       <button id="close-modal" class="modal-close-btn" aria-label="Close dialog">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
+        <svg class="pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M7 19H5V17H7V19ZM19 19H17V17H19V19ZM9 15V17H7V15H9ZM17 17H15V15H17V17ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM13 13H11V11H13V13ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM9 9H7V7H9V9ZM17 9H15V7H17V9ZM7 7H5V5H7V7ZM19 7H17V5H19V7Z"/>
         </svg>
       </button>
 
@@ -591,8 +593,8 @@
       <!-- Success View -->
       <div id="modal-success-view" class="modal-success" style="display: none;">
         <div class="success-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5">
-            <polyline points="20 6 9 17 4 12"></polyline>
+          <svg class="pixel-icon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
+            <path d="M7 18H5v-2h2v2Zm6 0h-2v-2h2v2Zm-8-2H3v-2h2v2Zm4 0H7v-2h2v2Zm6-2v2h-2v-2h2ZM3 14H1v-2h2v2Zm8 0H9v-2h2v2Zm6 0h-2v-2h2v2Zm-4-2h-2v-2h2v2Zm6 0h-2v-2h2v2Zm-4-2h-2V8h2v2Zm6 0h-2V8h2v2Zm-4-2h-2V6h2v2Zm6 0h-2V6h2v2Z"/>
           </svg>
         </div>
         <h3 class="success-title">Message Received</h3>

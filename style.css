@@ -1,10 +1,13 @@
 /* Alpha cube Design System & Stylesheet */
 
 :root {
-  /* Typography */
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-comic: 'Bangers', Impact, sans-serif;
+  /* Typography: Saira (engineered high-craft sans) + Geist Pixel (retro-pixel headings & telemetry) */
+  --font-pixel: 'Geist Pixel', monospace;
+  --font-saira: 'Saira', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', 'Courier New', monospace;
+  --font-sans: var(--font-saira);
+  --font-serif: var(--font-saira);
+  --font-comic: var(--font-pixel);
 
   /* Global Brand Palette (#09318D, #FFFFFF, #FD91CC) */
   --cobalt-primary: #09318D;
@@ -187,15 +190,17 @@ body {
 }
 
 .brand-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
 }
 
 .brand-badge {
   display: inline-block;
+  font-family: var(--font-pixel);
+  font-weight: 400;
   font-size: 0.72rem;
-  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 3px 8px;
@@ -218,8 +223,10 @@ body {
 }
 
 .nav-link {
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
@@ -229,38 +236,43 @@ body {
   color: var(--text-primary);
 }
 
-/* Mobile Hamburger Button */
+/* Mobile Hamburger Button with Pixel Icon */
 .mobile-menu-btn {
   display: none;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
   background-color: var(--surface-card);
   color: var(--text-primary);
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.15s ease, background-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
 
-.mobile-menu-btn .hamburger-line {
-  width: 18px;
-  height: 2px;
-  background-color: currentColor;
-  border-radius: 2px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.mobile-menu-btn:hover {
+  transform: scale(1.06);
+  border-color: var(--border-strong);
 }
 
-.mobile-menu-btn.active .hamburger-line:first-child {
-  transform: translateY(3.5px) rotate(45deg);
+.mobile-menu-btn:active {
+  transform: scale(0.96);
 }
 
-.mobile-menu-btn.active .hamburger-line:last-child {
-  transform: translateY(-3.5px) rotate(-45deg);
+.mobile-menu-btn .menu-close-icon {
+  display: none;
+}
+
+.mobile-menu-btn.active .menu-open-icon {
+  display: none;
+}
+
+.mobile-menu-btn.active .menu-close-icon {
+  display: block;
 }
 
 /* Mobile Floating Drawer */
@@ -386,15 +398,30 @@ body {
   display: block;
 }
 
+/* Pixelarticons System */
+.pixel-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+}
+
+.pixel-icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
 /* Button System */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: var(--font-sans);
+  font-family: var(--font-pixel);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   padding: 10px 22px;
   border-radius: 8px;
   background-color: var(--brand-cta-bg);
@@ -419,9 +446,11 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-sans);
+  gap: 8px;
+  font-family: var(--font-pixel);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   padding: 10px 22px;
   border-radius: 8px;
   background-color: var(--surface-card);
@@ -498,17 +527,18 @@ body {
 }
 
 .hero-headline {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 700;
-  font-size: clamp(2.75rem, 5vw, 4.4rem);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
+  font-family: var(--font-saira);
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
   text-wrap: balance;
 }
 
 .hero-lead {
+  font-family: var(--font-saira);
   font-size: 1.2rem;
   line-height: 1.65;
   color: var(--text-secondary);
@@ -565,14 +595,18 @@ body {
 }
 
 .proof-val {
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 1.15rem;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
 
 .proof-label {
-  font-size: 0.9rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
   color: var(--text-secondary);
 }
 
@@ -665,9 +699,9 @@ body {
 }
 
 .status-ascii-pill {
-  font-family: var(--font-sans);
+  font-family: var(--font-pixel);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.04em;
   padding: 3px 8px;
   border-radius: 6px;
@@ -707,8 +741,10 @@ body {
 }
 
 .status-title {
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: var(--font-pixel);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
 }
 
@@ -732,12 +768,12 @@ body {
 }
 
 .section-heading {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-saira);
+  font-style: normal;
   font-weight: 700;
-  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   line-height: 1.18;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
   text-wrap: balance;
 }
@@ -842,8 +878,9 @@ body {
 }
 
 .tile-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 4px 10px;
@@ -881,8 +918,10 @@ body {
 }
 
 .tech-pill {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   padding: 4px 10px;
   border-radius: 6px;
   background-color: var(--surface-raised);
@@ -909,7 +948,7 @@ body {
   border: 1px solid rgba(253, 145, 204, 0.25);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.35);
   padding: 12px 14px;
-  font-family: "Inter", "Consolas", monospace;
+  font-family: var(--font-mono);
   overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
   cursor: pointer;
@@ -932,9 +971,10 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
+  font-family: var(--font-pixel);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-secondary);
 }
 
@@ -964,7 +1004,7 @@ body {
   margin: 0;
   white-space: pre;
   overflow-x: auto;
-  font-family: inherit;
+  font-family: var(--font-mono);
   letter-spacing: -0.01em;
 }
 
@@ -972,8 +1012,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   color: var(--brand-accent);
   padding: 6px 12px;
   border-radius: 6px;
@@ -1079,6 +1121,7 @@ body {
 }
 
 .founder-name {
+  font-family: var(--font-saira);
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -1086,16 +1129,19 @@ body {
 }
 
 .founder-role {
-  font-size: 0.9rem;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
   color: var(--brand-accent);
-  font-weight: 600;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   display: block;
   margin-top: 4px;
 }
 
 .founder-tag {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 4px 10px;
@@ -1119,8 +1165,10 @@ body {
 }
 
 .skill-pill {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   padding: 4px 10px;
   border-radius: 6px;
   background-color: var(--surface-raised);
@@ -1194,8 +1242,9 @@ body {
 
 .metric-badge {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 4px 10px;
@@ -1207,11 +1256,12 @@ body {
 }
 
 .story-quote-text {
+  font-family: var(--font-saira);
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--text-primary);
   margin-bottom: 28px;
-  font-style: italic;
+  font-style: normal;
   text-wrap: pretty;
 }
 
@@ -1227,8 +1277,9 @@ body {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--cobalt-primary), var(--pink-accent));
   color: #FFFFFF;
-  font-weight: 800;
-  font-size: 1.1rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1240,12 +1291,14 @@ body {
 }
 
 .client-name {
+  font-family: var(--font-saira);
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .client-location {
+  font-family: var(--font-saira);
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
@@ -1278,12 +1331,13 @@ body {
 }
 
 .beam-text {
-  font-family: var(--font-comic);
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-family: var(--font-pixel);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  font-weight: 400;
   color: #FFFFFF;
   text-shadow: 2px 2px 0 #000000, 4px 4px 0 #FD91CC;
-  letter-spacing: 0.04em;
-  transform: skew(-2deg);
+  letter-spacing: 0.05em;
+  transform: skew(-1deg);
 }
 
 .closing-content-grid {
@@ -1339,15 +1393,17 @@ body {
 }
 
 .closing-brand-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
   color: var(--text-primary);
 }
 
 .closing-heading {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-saira);
+  font-style: normal;
+  font-weight: 700;
   font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   line-height: 1.2;
   color: var(--text-primary);
@@ -1355,6 +1411,7 @@ body {
 }
 
 .closing-text {
+  font-family: var(--font-saira);
   font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.6;
@@ -1385,8 +1442,10 @@ body {
   background-color: var(--surface-raised);
   color: var(--text-primary);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  font-size: 0.88rem;
   transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 }
 
@@ -1426,7 +1485,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-weight: 700;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
   color: var(--text-primary);
 }
 
@@ -1457,7 +1519,10 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
   color: var(--brand-accent);
 }
 
@@ -1503,8 +1568,10 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
   background: var(--surface-raised);
@@ -1530,8 +1597,9 @@ body {
 }
 
 .modal-title {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-saira);
+  font-style: normal;
+  font-weight: 700;
   font-size: 1.85rem;
   line-height: 1.25;
   color: var(--text-primary);
@@ -1559,8 +1627,10 @@ body {
 }
 
 .form-label {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
   color: var(--text-primary);
 }
 
@@ -1573,7 +1643,7 @@ body {
   border: 1px solid var(--border-strong);
   background-color: var(--surface-input);
   color: var(--text-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-saira);
   font-size: 0.95rem;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -1629,12 +1699,14 @@ body {
 }
 
 .success-title {
+  font-family: var(--font-saira);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .success-text {
+  font-family: var(--font-saira);
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;

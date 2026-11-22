@@ -16,9 +16,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        comic: ['Bangers', 'Impact', 'sans-serif'],
+        pixel: ['"Geist Pixel"', 'monospace'],
+        sans: ['Saira', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'monospace'],
       }
     },
   },
