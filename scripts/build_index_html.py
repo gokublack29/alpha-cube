@@ -91,8 +91,7 @@ html_content = f'''<!DOCTYPE html>
             </p>
             <div class="hero-cta-wrap">
               <a href="#contact" class="btn-get-in-touch" id="hero-cta">
-                <span class="btn-label">Get in touch</span>
-                <img src="assets/btn-squiggly.svg" alt="" class="btn-squiggly" aria-hidden="true">
+                Get in touch
               </a>
             </div>
             <div class="hero-trust-bar">

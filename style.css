@@ -30,30 +30,44 @@
   --header-bg: rgba(0, 0, 0, 0.85);
   --header-border: rgba(255, 255, 255, 0.1);
   --bento-box-bg: #D9D9D9;
+  --bento-border: transparent;
+  --bento-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --bento-hover-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
   --bento-text: #111111;
   --bento-sub: #444444;
+  --bento-meta: #555555;
   --bento-tag-bg: rgba(0, 0, 0, 0.08);
+  --bento-tag-color: #111111;
   --card-border-stroke: #BCBCBC;
+  --story-card-bg: transparent;
+  --story-card-shadow: none;
   --modal-bg: #141416;
   --input-bg: #1c1c1f;
   --input-border: #333338;
 }
 
 [data-theme="light"] {
-  --bg-page: #FFFFFF;
-  --text-main: #0B0B0C;
-  --text-muted: rgba(0, 0, 0, 0.75);
-  --text-subtle: rgba(0, 0, 0, 0.5);
-  --header-bg: rgba(255, 255, 255, 0.85);
-  --header-border: rgba(0, 0, 0, 0.08);
-  --bento-box-bg: #EAEAEA;
-  --bento-text: #111111;
-  --bento-sub: #444444;
-  --bento-tag-bg: rgba(0, 0, 0, 0.06);
-  --card-border-stroke: #555555;
+  --bg-page: #FAFAFB;
+  --text-main: #0F172A;
+  --text-muted: #475569;
+  --text-subtle: #94A3B8;
+  --header-bg: rgba(250, 250, 251, 0.85);
+  --header-border: rgba(15, 23, 42, 0.08);
+  --bento-box-bg: #FFFFFF;
+  --bento-border: rgba(15, 23, 42, 0.08);
+  --bento-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+  --bento-hover-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --bento-text: #0F172A;
+  --bento-sub: #475569;
+  --bento-meta: #64748B;
+  --bento-tag-bg: rgba(0, 209, 124, 0.12);
+  --bento-tag-color: #047857;
+  --card-border-stroke: #334155;
+  --story-card-bg: #FFFFFF;
+  --story-card-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
   --modal-bg: #FFFFFF;
-  --input-bg: #F7F7F8;
-  --input-border: #DCDCE0;
+  --input-bg: #F8FAFC;
+  --input-border: #CBD5E1;
 }
 
 /* Base resets */
@@ -226,23 +240,24 @@ body {
 }
 
 .btn-get-in-touch {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 42px;
+  padding: 16px 38px;
   background-color: var(--color-green);
   color: #000000;
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   text-decoration: none;
   border-radius: 9999px;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 8px 24px rgba(0, 209, 124, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 209, 124, 0.32);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-get-in-touch:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 209, 124, 0.45);
 }
 
 .btn-get-in-touch:active,
@@ -280,17 +295,6 @@ body {
   display: inline-block;
 }
 
-.btn-squiggly {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 122%;
-  height: 160%;
-  pointer-events: none;
-  z-index: 2;
-}
-
 .hero-media {
   display: flex;
   justify-content: flex-end;
@@ -320,19 +324,22 @@ body {
 .bento-box {
   background-color: var(--bento-box-bg);
   color: var(--bento-text);
+  border: 1px solid var(--bento-border);
+  box-shadow: var(--bento-shadow);
   border-radius: 16px;
   padding: 36px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
 .bento-box:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--bento-hover-shadow);
+  border-color: rgba(0, 209, 124, 0.35);
 }
 
 .bento-box-1 {
@@ -384,7 +391,7 @@ body {
   padding: 4px 10px;
   border-radius: 9999px;
   background-color: var(--bento-tag-bg);
-  color: #111111;
+  color: var(--bento-tag-color);
   margin-bottom: 12px;
 }
 
@@ -413,7 +420,7 @@ body {
 .bento-meta {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #555555;
+  color: var(--bento-meta);
   margin-top: auto;
 }
 
@@ -513,11 +520,15 @@ body {
 
 .story-card {
   position: relative;
+  background-color: var(--story-card-bg);
+  border-radius: 16px;
+  box-shadow: var(--story-card-shadow);
   padding: 44px 36px;
   min-height: 260px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-squiggly-border {

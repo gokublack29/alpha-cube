@@ -20,14 +20,13 @@
     }
     localStorage.setItem('theme', theme);
 
-    // Swap images based on theme
+    // Always use crisp transparent cutout assets across themes so there are no rectangular background boxes
     if (saulImage) {
-      saulImage.src = theme === 'light' ? 'assets/saul-light.png' : 'assets/saul-dark.png';
+      saulImage.src = 'assets/saul-dark.png';
     }
     if (teamStageImage) {
-      const teamSrc = theme === 'light' ? 'assets/team-light.png' : 'assets/team-dark.png';
-      teamStageImage.setAttribute('href', teamSrc);
-      teamStageImage.setAttributeNS('http://www.w3.org/1999/xlink', 'href', teamSrc);
+      teamStageImage.setAttribute('href', 'assets/team-dark.png');
+      teamStageImage.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'assets/team-dark.png');
     }
 
     if (themeToggle) {
