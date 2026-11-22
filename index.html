@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha cube | Full-Stack Development Agency</title>
+  <meta name="description" content="Alpha cube is a full-stack development agency that goes beyond just delivering the product and actually looking after it post-deployment.">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.querySelector('meta[name="color-scheme"]').content = savedTheme;
+    } catch(e) {}
+  </script>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <a href="#" class="brand" aria-label="Alpha cube home">
+        <img src="assets/logo.png" alt="Alpha cube logo" class="brand-logo" width="48" height="48">
+        <span class="brand-name">Alpha cube</span>
+      </a>
+
+      <nav class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle color theme" title="Toggle dark/light theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn-get-in-touch-nav">Get in touch</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">Better call us</h1>
+          <p class="hero-subtitle">
+            Alpha cube is a full-stack development agency that goes beyond just delivering the product and actually looking after it post-deployment.
+          </p>
+          <div class="hero-cta-wrapper">
+            <a href="#contact" class="btn-get-in-touch" id="hero-cta">
+              <span class="btn-text">Get in touch</span>
+              <img src="assets/btn-squiggly.svg" alt="" class="btn-squiggly-border" aria-hidden="true">
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-container">
+          <img id="saul-image" src="assets/saul-dark.png" alt="Better call us" class="hero-saul-img" width="550" height="600">
+        </div>
+      </section>
+
+      <!-- What We Do Section (Bento Grid) -->
+      <section class="what-we-do-section" id="services">
+        <h2 class="section-title">What we do</h2>
+
+        <div class="bento-grid">
+          <!-- Card 1: Square -->
+          <article class="bento-card card-square card-1">
+            <div class="card-tag">Full-Stack</div>
+            <h3 class="card-title">Web Applications</h3>
+            <p class="card-desc">Production-grade web apps built with modern frameworks. Fast, responsive, and engineered for high traffic.</p>
+            <div class="card-meta">Next.js &middot; React &middot; TypeScript</div>
+          </article>
+
+          <!-- Card 2: Wide -->
+          <article class="bento-card card-wide card-2">
+            <div class="card-tag">Core Architecture</div>
+            <h3 class="card-title">Backend & Distributed Systems</h3>
+            <p class="card-desc">Reliable APIs, microservices, and database architectures engineered to stay fast and never collapse under load.</p>
+            <div class="card-meta">Node.js &middot; Python &middot; PostgreSQL &middot; Redis &middot; GraphQL</div>
+          </article>
+
+          <!-- Card 3: Square -->
+          <article class="bento-card card-square card-3">
+            <div class="card-tag">Product Design</div>
+            <h3 class="card-title">UI / UX & Branding</h3>
+            <p class="card-desc">Interfaces with character and polish. We design products that users remember, interact with, and genuinely love using.</p>
+            <div class="card-meta">Figma &middot; Design Systems &middot; Micro-interactions</div>
+          </article>
+
+          <!-- Card 4: Compact -->
+          <article class="bento-card card-compact card-4">
+            <div class="card-tag alert-tag">Rapid Response</div>
+            <h3 class="card-title">24/7 Midnight Rescue</h3>
+            <p class="card-desc">When production breaks at midnight, we step in and fix the root cause immediately.</p>
+          </article>
+
+          <!-- Card 5: Tall -->
+          <article class="bento-card card-tall card-5">
+            <div class="card-tag">Lifecycle</div>
+            <h3 class="card-title">Post-Deployment Care</h3>
+            <p class="card-desc">We never abandon code. Continuous monitoring, performance tuning, vulnerability patching, and infrastructure scaling long after release.</p>
+            <div class="card-meta">Uptime 99.99% &middot; Security &middot; Maintenance</div>
+          </article>
+
+          <!-- Card 6: Compact -->
+          <article class="bento-card card-compact card-6">
+            <div class="card-tag">Infra</div>
+            <h3 class="card-title">Cloud & DevOps</h3>
+            <p class="card-desc">Zero-downtime CI/CD pipelines, Docker containerization, and automated cloud deployments.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Meet Our Team Section -->
+      <section class="team-section" id="team">
+        <h2 class="section-title">Meet our team</h2>
+
+        <div class="team-stage">
+          <div class="team-member-annotation left-annotation">
+            <span class="member-name">Jayadithya</span>
+            <span class="member-role">Officer</span>
+            <img src="assets/arrow-jayadithya.svg" alt="" class="team-arrow arrow-left" aria-hidden="true">
+          </div>
+
+          <div class="team-photo-wrap">
+            <img id="team-image" src="assets/team-dark.png" alt="Jayadithya and Gurubaravikkram of Alpha cube" class="team-img" width="700" height="450">
+          </div>
+
+          <div class="team-member-annotation right-annotation">
+            <img src="assets/arrow-gurubaravikkram.svg" alt="" class="team-arrow arrow-right" aria-hidden="true">
+            <span class="member-name">Gurubaravikkram</span>
+            <span class="member-role">Md sir</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real Stories From Clients Section -->
+      <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-header">
+          <h2 class="section-title stories-heading">
+            Real <em>stories</em><br>from clients
+          </h2>
+
+          <div class="carousel-nav" aria-label="Testimonial navigation">
+            <button class="nav-arrow-btn prev-btn" id="prev-testimony" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <button class="nav-arrow-btn next-btn" id="next-testimony" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="testimonials-body">
+          <div class="testimonial-alpha-col">
+            <img src="assets/logo.png" alt="Alpha pixel logo" class="pixel-alpha-big" width="380" height="380">
+          </div>
+
+          <div class="testimonials-slider" id="testimonials-slider">
+            <!-- Testimonial 1: Priya -->
+            <div class="testimonial-card" data-index="0">
+              <div class="card-border-svg-wrap">
+                <img src="assets/card-border-1.svg" alt="" class="squiggly-card-border" aria-hidden="true">
+              </div>
+              <div class="testimonial-content">
+                <blockquote class="testimonial-quote">
+                  "The website they designed for us totally exceeded our expectations."
+                </blockquote>
+                <div class="author-info">
+                  <div class="author-avatar" aria-hidden="true"></div>
+                  <div class="author-text">
+                    <span class="author-name">Priya</span>
+                    <span class="author-loc">chennai</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2: Jackson -->
+            <div class="testimonial-card" data-index="1">
+              <div class="card-border-svg-wrap">
+                <img src="assets/card-border-2.svg" alt="" class="squiggly-card-border" aria-hidden="true">
+              </div>
+              <div class="testimonial-content">
+                <blockquote class="testimonial-quote">
+                  "when my backend cracked , it was midnight and fixed it asap. love the team!"
+                </blockquote>
+                <div class="author-info">
+                  <div class="author-avatar" aria-hidden="true"></div>
+                  <div class="author-text">
+                    <span class="author-name">Jackson</span>
+                    <span class="author-loc">austin</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hey Who Are We & Contact Footer -->
+      <section class="footer-cta-section" id="contact">
+        <!-- Angled Dynamic Comic Banner -->
+        <div class="comic-beam-container">
+          <img src="assets/comic-banner.svg" alt="HEY, WHO ARE WE?" class="comic-beam-svg">
+        </div>
+
+        <div class="cta-stage">
+          <div class="anirudh-wrap">
+            <img src="assets/anirudh.png" alt="Team member celebrating" class="anirudh-img" width="360" height="450">
+          </div>
+
+          <div class="cta-actions-wrap">
+            <div class="footer-brand">
+              <img src="assets/logo.png" alt="Alpha cube logo" class="footer-logo" width="60" height="60">
+              <h3 class="footer-brand-name">Alpha cube</h3>
+            </div>
+
+            <div class="starburst-buttons">
+              <!-- Mail Us Button -->
+              <a href="mailto:contact@alphacube.dev" class="starburst-btn mail-btn" aria-label="Mail us at contact@alphacube.dev">
+                <div class="starburst-bg-wrap">
+                  <img src="assets/starburst-mail.svg" alt="" class="starburst-svg" aria-hidden="true">
+                </div>
+                <div class="starburst-inner">
+                  <img src="assets/mail-icon.png" alt="Gmail" class="starburst-icon" width="36" height="36">
+                  <span class="starburst-label">Mail us</span>
+                </div>
+              </a>
+
+              <!-- Call Us Button -->
+              <a href="tel:+1234567890" class="starburst-btn call-btn" aria-label="Call us">
+                <div class="starburst-bg-wrap">
+                  <img src="assets/starburst-call.svg" alt="" class="starburst-svg" aria-hidden="true">
+                </div>
+                <div class="starburst-inner">
+                  <img src="assets/phone-icon.png" alt="Call" class="starburst-icon" width="36" height="36">
+                  <span class="starburst-label">Call us</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="site-footer">
+          <p class="footer-copy">&copy; 2026 Alpha cube. Full-stack development & post-deployment care.</p>
+        </footer>
+      </section>
+    </main>
+
+    <!-- Interactive Contact Modal -->
+    <dialog id="contact-dialog" class="contact-modal">
+      <div class="modal-box">
+        <button id="close-modal" class="close-btn" aria-label="Close dialog">&times;</button>
+        <h3 class="modal-title">Get in touch with Alpha cube</h3>
+        <p class="modal-sub">Tell us about your project or system. We reply within a few hours.</p>
+
+        <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent! We will reach out shortly.'); this.closest('dialog').close();">
+          <label>
+            <span>Your Name</span>
+            <input type="text" name="name" required placeholder="Santhanam">
+          </label>
+          <label>
+            <span>Email Address</span>
+            <input type="email" name="email" required placeholder="you@domain.com">
+          </label>
+          <label>
+            <span>Project Details</span>
+            <textarea name="message" rows="4" required placeholder="What are you building? How can we help?"></textarea>
+          </label>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </dialog>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
