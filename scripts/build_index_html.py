@@ -261,54 +261,55 @@ html_content = f'''<!DOCTYPE html>
           </div>
         </div>
       </section>
-
-      <!-- Footer & CTA Section (HEY, WHO ARE WE?) -->
-      <section class="footer-cta-stage" id="contact">
-        <svg viewBox="0 4200 1728 1385" width="100%" height="auto" class="footer-svg-canvas" fill="none">
-          <!-- Dynamic Angled Yellow & Red Comic Beam -->
-          <path d="{d['p24']}" fill="#FCEF03" />
-          <path d="{d['p25']}" fill="#F10307" />
-          <!-- Comic Text: HEY, WHO ARE WE? -->
-          <path d="{d['p26']}" fill="#000000" />
-          <path d="{d['p27']}" fill="#D6B232" />
-
-          <!-- Anirudh with mic touching the beam tip at (256.5, 4894.1) -->
-          <image href="assets/anirudh.png" x="-159" y="4547" width="875" height="1094" />
-
-          <!-- Alpha Logo & Brand Name under the beam -->
-          <image href="assets/logo.png" x="814" y="4843.73" width="175.214" height="175.214" />
-          <path d="{d['p23']}" class="footer-brand-glyph" fill="currentColor" />
-
-          <!-- Clickable Starburst: Mail us -->
-          <a href="mailto:contact@alphacube.dev" class="svg-action-link" aria-label="Mail us at contact@alphacube.dev">
-            <g class="starburst-group">
-              <path d="{d['p28']}" fill="#945DF7" />
-              <path d="{d['p29']}" fill="#00D17C" />
-              <path d="{d['p30']}" fill="#458BF9" />
-              <image href="assets/mail-icon.png" x="732" y="5225" width="100" height="100" />
-              <path d="{d['p31']}" fill="#FFFFFF" />
-            </g>
-          </a>
-
-          <!-- Clickable Starburst: Call us -->
-          <a href="tel:+1234567890" class="svg-action-link" aria-label="Call us">
-            <g class="starburst-group">
-              <path d="{d['p32']}" fill="#458BF9" />
-              <path d="{d['p33']}" fill="#945DF7" />
-              <path d="{d['p34']}" fill="#00D17C" />
-              <image href="assets/phone-icon.png" x="1199" y="5263" width="81" height="81" />
-              <path d="{d['p35']}" fill="#FFFFFF" />
-            </g>
-          </a>
-        </svg>
-
-        <footer class="bottom-bar">
-          <p class="copyright-text">&copy; 2026 Alpha cube. Full-stack development & post-deployment care.</p>
-        </footer>
-      </section>
     </main>
+  </div>
 
-    <!-- Contact Dialog Modal -->
+  <!-- Footer & CTA Section (Full-bleed: touches the right edge directly) -->
+  <section class="footer-cta-stage" id="contact">
+    <svg viewBox="0 4200 1728 1385" width="100%" height="auto" class="footer-svg-canvas" fill="none">
+      <!-- Dynamic Angled Yellow & Red Comic Beam -->
+      <path d="{d['p24']}" fill="#FCEF03" />
+      <path d="{d['p25']}" fill="#F10307" />
+      <!-- Comic Text: HEY, WHO ARE WE? -->
+      <path d="{d['p26']}" fill="#000000" />
+      <path d="{d['p27']}" fill="#D6B232" />
+
+      <!-- Anirudh with mic touching the beam tip at (256.5, 4894.1) -->
+      <image href="assets/anirudh.png" x="-159" y="4547" width="875" height="1094" />
+
+      <!-- Alpha Logo & Brand Name under the beam -->
+      <image href="assets/logo.png" x="814" y="4843.73" width="175.214" height="175.214" />
+      <path d="{d['p23']}" class="footer-brand-glyph" fill="currentColor" />
+
+      <!-- Clickable Starburst: Mail us -->
+      <a href="mailto:contact@alphacube.dev" class="svg-action-link" aria-label="Mail us at contact@alphacube.dev">
+        <g class="starburst-group">
+          <path d="{d['p28']}" fill="#945DF7" />
+          <path d="{d['p29']}" fill="#00D17C" />
+          <path d="{d['p30']}" fill="#458BF9" />
+          <image href="assets/mail-icon.png" x="732" y="5225" width="100" height="100" />
+          <path d="{d['p31']}" fill="#FFFFFF" />
+        </g>
+      </a>
+
+      <!-- Clickable Starburst: Call us -->
+      <a href="tel:+1234567890" class="svg-action-link" aria-label="Call us">
+        <g class="starburst-group">
+          <path d="{d['p32']}" fill="#458BF9" />
+          <path d="{d['p33']}" fill="#945DF7" />
+          <path d="{d['p34']}" fill="#00D17C" />
+          <image href="assets/phone-icon.png" x="1199" y="5263" width="81" height="81" />
+          <path d="{d['p35']}" fill="#FFFFFF" />
+        </g>
+      </a>
+    </svg>
+
+    <footer class="bottom-bar">
+      <p class="copyright-text">&copy; 2026 Alpha cube. Full-stack development & post-deployment care.</p>
+    </footer>
+  </section>
+
+  <!-- Contact Dialog Modal -->
     <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading">
       <div class="modal-box">
         <button id="close-modal" class="close-btn" aria-label="Close dialog">&times;</button>
