@@ -284,9 +284,24 @@ body {
   width: 100%;
 }
 
-/* Hero Stage */
+/* Hero Stage & Entrance */
 .hero-stage {
   padding: 72px 0 96px;
+}
+
+[data-enter] {
+  animation: hero-enter 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-grid {
@@ -421,6 +436,11 @@ body {
   max-height: 540px;
   object-fit: contain;
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait-card:hover .portrait-img {
+  transform: scale(1.02);
 }
 
 .incident-status-pill {
@@ -639,6 +659,16 @@ body {
   border-radius: 6px;
   background-color: var(--surface-raised);
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+}
+
+.tech-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  display: inline-block;
+  object-fit: contain;
 }
 
 .callout-badge {
@@ -698,6 +728,11 @@ body {
   height: auto;
   max-height: 460px;
   object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founders-media:hover .founders-photo {
+  transform: scale(1.02);
 }
 
 .founders-roster {
@@ -807,7 +842,7 @@ body {
 
 .stories-track {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
