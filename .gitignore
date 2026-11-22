@@ -1,3 +1,7 @@
 .venv/
 __pycache__/
 .taste-skill/
+node_modules/
+mobile-*.png
+scripts/*.png
+scripts/*.cjs
