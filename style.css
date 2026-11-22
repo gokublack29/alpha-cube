@@ -471,7 +471,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.04em;
   padding: 10px 22px;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--brand-cta-bg);
   color: var(--brand-cta-color);
   border: none;
@@ -500,7 +500,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.04em;
   padding: 10px 22px;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: var(--surface-card);
   color: var(--text-primary);
   border: 1px solid var(--border-strong);
@@ -1494,7 +1494,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 12px 22px;
-  border-radius: 40px;
+  border-radius: 6px;
   border: 1px solid var(--border-strong);
   background-color: var(--surface-raised);
   color: var(--text-primary);
