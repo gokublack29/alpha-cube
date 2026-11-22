@@ -6,7 +6,7 @@
   // --- Theme Management ---
   const themeToggle = document.getElementById('theme-toggle');
   const saulImage = document.getElementById('saul-image');
-  const teamImage = document.getElementById('team-image');
+  const teamStageImage = document.getElementById('team-stage-img');
 
   function getSavedTheme() {
     return localStorage.getItem('theme') || 'dark';
@@ -24,8 +24,10 @@
     if (saulImage) {
       saulImage.src = theme === 'light' ? 'assets/saul-light.png' : 'assets/saul-dark.png';
     }
-    if (teamImage) {
-      teamImage.src = theme === 'light' ? 'assets/team-light.png' : 'assets/team-dark.png';
+    if (teamStageImage) {
+      const teamSrc = theme === 'light' ? 'assets/team-light.png' : 'assets/team-dark.png';
+      teamStageImage.setAttribute('href', teamSrc);
+      teamStageImage.setAttributeNS('http://www.w3.org/1999/xlink', 'href', teamSrc);
     }
 
     if (themeToggle) {
@@ -46,11 +48,10 @@
   // --- Testimonial Slider / Carousel Navigation ---
   const prevBtn = document.getElementById('prev-testimony');
   const nextBtn = document.getElementById('next-testimony');
-  const cards = document.querySelectorAll('.testimonial-card');
+  const cards = document.querySelectorAll('.story-card');
   let activeIndex = 0;
 
   function updateTestimonialView() {
-    // On small screens, toggle active card
     if (window.innerWidth <= 768 && cards.length > 0) {
       cards.forEach((card, idx) => {
         card.style.display = idx === activeIndex ? 'flex' : 'none';
@@ -96,7 +97,6 @@
       contactDialog.close();
     });
 
-    // Close when clicking dialog backdrop
     contactDialog.addEventListener('click', (e) => {
       const rect = contactDialog.getBoundingClientRect();
       const isInDialog = (
