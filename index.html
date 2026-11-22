@@ -51,7 +51,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="site-shell">
     <!-- Navigation -->
-    <header class="site-header">
+    <header class="site-header floating-liquid-glass">
       <div class="header-inner">
         <a href="#" class="brand-lockup" aria-label="Alpha cube homepage">
           <img src="assets/logo.png" alt="Alpha cube logo" class="brand-mark" width="40" height="40">
@@ -82,8 +82,22 @@
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
-          <button class="btn-primary trigger-modal">Start a Project</button>
+          <button class="btn-primary header-cta trigger-modal">Start a Project</button>
+          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="hamburger-line" aria-hidden="true"></span>
+            <span class="hamburger-line" aria-hidden="true"></span>
+          </button>
         </div>
+      </div>
+
+      <!-- Mobile Floating Liquid Glass Drawer -->
+      <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+        <nav class="mobile-nav-links">
+          <a href="#services" class="mobile-nav-link">Capabilities</a>
+          <a href="#team" class="mobile-nav-link">Founders</a>
+          <a href="#stories" class="mobile-nav-link">Case Stories</a>
+          <button class="btn-primary mobile-cta-btn trigger-modal">Start a Project</button>
+        </nav>
       </div>
     </header>
 
@@ -124,15 +138,17 @@
           </div>
 
           <div class="hero-visual">
-            <div class="portrait-card">
+            <div class="portrait-card" id="hero-portrait-card">
               <div class="portrait-halo" aria-hidden="true"></div>
-              <img id="hero-saul-img" src="assets/saul-dark.png" alt="Better call Alpha cube" class="portrait-img" width="560" height="620">
-              <div class="incident-status-pill">
+              <img id="hero-saul-img" src="assets/saul-dark.png" alt="Engineering leadership at Alpha cube" class="portrait-source-img" width="560" height="620">
+              <canvas id="hero-ascii-canvas" class="ascii-canvas" aria-label="Interactive ASCII leadership portrait"></canvas>
+              <div class="incident-status-pill liquid-glass-capsule">
                 <span class="pulse-indicator" aria-hidden="true"></span>
                 <div class="status-content">
                   <span class="status-title">Production Systems: Operational</span>
                   <span class="status-sub">24/7 Senior Engineers On-Call</span>
                 </div>
+                <span class="status-ascii-pill" id="hero-status-ascii" aria-hidden="true">[99.99%::OK]</span>
               </div>
             </div>
           </div>
@@ -238,6 +254,17 @@
               <p class="tile-text">
                 When a database deadlocks or a payment service crashes at 2:00 AM, you reach senior engineers directly. We diagnose the breakdown, patch the root cause, and bring your services back to green within fifteen minutes.
               </p>
+
+              <!-- Liquid Glass ASCII Telemetry Window -->
+              <div class="liquid-glass-telemetry" id="bento-ascii-telemetry" aria-label="Live ASCII incident telemetry monitor">
+                <div class="telemetry-bar">
+                  <span class="telemetry-dot" aria-hidden="true"></span>
+                  <span class="telemetry-title">SYS_BUS // ACTIVE</span>
+                  <span class="telemetry-ping" id="telemetry-ping-val">12ms</span>
+                </div>
+                <pre class="telemetry-ascii-stream" id="telemetry-stream" aria-hidden="true"></pre>
+              </div>
+
               <div class="callout-badge">
                 <span class="callout-indicator" aria-hidden="true"></span>
                 <span>Average Recovery Time: 14 Minutes</span>
@@ -302,7 +329,7 @@
         </div>
 
         <div class="founders-stage">
-          <div class="founders-media">
+          <div class="founders-media liquid-glass-frame">
             <div class="founders-backdrop" aria-hidden="true"></div>
             <img src="assets/team-dark.png" alt="Alpha cube founders Jayadithya, Gurubaravikkram, Dinesh Kumar, and Hemanth" class="founders-photo" width="920" height="560" loading="lazy">
           </div>
