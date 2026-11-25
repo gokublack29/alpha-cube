@@ -353,7 +353,7 @@
     const img = new Image();
     const CHARS = ' .·:;+=xX#$@';
     const GLITCH_CHARS = '01<>/[]{}+*#%@$&!?~';
-    const COLS = 74;
+    const COLS = 72;
     let ROWS = 0;
     let grid = [];
     let ripples = [];
@@ -402,18 +402,27 @@
       const cellW = canvas.width / COLS;
       const cellH = canvas.height / ROWS;
 
+      const getLum = (gx, gy) => {
+        const cx = Math.max(0, Math.min(COLS - 1, gx));
+        const cy = Math.max(0, Math.min(ROWS - 1, gy));
+        const idx = (cy * COLS + cx) * 4;
+        const a = offscreenData[idx + 3] / 255;
+        if (a <= 0.08) return 0;
+        return (0.299 * offscreenData[idx] + 0.587 * offscreenData[idx + 1] + 0.114 * offscreenData[idx + 2]) / 255;
+      };
+
       grid = [];
       for (let y = 0; y < ROWS; y++) {
         for (let x = 0; x < COLS; x++) {
           const idx = (y * COLS + x) * 4;
-          const r = offscreenData[idx];
-          const g = offscreenData[idx + 1];
-          const b = offscreenData[idx + 2];
           const a = offscreenData[idx + 3] / 255;
-
-          const rawLum = a > 0.08 ? (0.299 * r + 0.587 * g + 0.114 * b) / 255 : 0;
+          const rawLum = getLum(x, y);
           const lum = Math.max(0, Math.min(1, Math.pow(rawLum, 1.2) * 1.25 - 0.04));
-          const charIdx = Math.floor(lum * (CHARS.length - 1));
+          // Lift midtones on light canvas so facial contours render in solid ink without hollowing out cheeks
+          const lightLum = a > 0.08 ? Math.max(0.18, Math.min(1, Math.pow(rawLum, 0.72) * 1.05)) : 0;
+
+          const darkChar = CHARS[Math.floor(lum * (CHARS.length - 1))];
+          const lightChar = CHARS[Math.floor(lightLum * (CHARS.length - 1))];
           const originX = (x + 0.5) * cellW;
           const originY = (y + 0.5) * cellH;
 
@@ -424,9 +433,11 @@
             originY,
             vx: 0,
             vy: 0,
-            baseChar: CHARS[charIdx],
-            char: CHARS[charIdx],
+            darkChar,
+            lightChar,
+            glitchChar: null,
             lum,
+            lightLum,
             alpha: a,
           });
         }
@@ -482,7 +493,7 @@
             cell.vx += (dx / dist) * force * 0.36;
             cell.vy += (dy / dist) * force * 0.36;
             if (dist < cursorRadius * 0.65 && Math.random() < 0.28) {
-              cell.char = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+              cell.glitchChar = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
             }
             isMoving = true;
           }
@@ -499,7 +510,7 @@
             const waveForce = (1 - waveDist / (32 * dpr)) * rip.life * 16 * dpr;
             cell.vx += (rdx / rdist) * waveForce * 0.32;
             cell.vy += (rdy / rdist) * waveForce * 0.32;
-            cell.char = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
+            cell.glitchChar = GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
             isMoving = true;
           }
         }
@@ -514,7 +525,7 @@
         if (Math.abs(cell.vx) > 0.05 || Math.abs(cell.vy) > 0.05) {
           isMoving = true;
         } else {
-          cell.char = cell.baseChar;
+          cell.glitchChar = null;
         }
       }
 
@@ -527,18 +538,19 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const cellH = canvas.height / ROWS;
-      ctx.font = `700 ${Math.round(cellH * 0.96)}px ui-monospace, "Cascadia Mono", Consolas, monospace`;
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      ctx.font = `${isLight ? 800 : 700} ${Math.round(cellH * (isLight ? 1.02 : 0.96))}px ui-monospace, "Cascadia Mono", Consolas, monospace`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       const scaledMouseX = mouse.x * dpr;
       const scaledMouseY = mouse.y * dpr;
       const cursorRadius = 110 * dpr;
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
       for (let i = 0; i < grid.length; i++) {
         const cell = grid[i];
-        if (cell.alpha < 0.08 || cell.char === ' ') continue;
+        const drawChar = cell.glitchChar || (isLight ? cell.lightChar : cell.darkChar);
+        if (cell.alpha < 0.08 || drawChar === ' ') continue;
 
         let isActive = false;
         if (!prefersReducedMotion && isHovered) {
@@ -560,12 +572,12 @@
         if (isActive) {
           ctx.fillStyle = isLight ? '#B01E6E' : '#FD91CC';
         } else if (isLight) {
-          if (cell.lum > 0.62) {
-            ctx.fillStyle = '#0B132B';
-          } else if (cell.lum > 0.28) {
-            ctx.fillStyle = `rgba(9, 49, 141, ${Math.max(0.62, cell.lum * 1.15)})`;
+          if (cell.lightLum > 0.52) {
+            ctx.fillStyle = '#051029';
+          } else if (cell.lightLum > 0.30) {
+            ctx.fillStyle = '#09318D';
           } else {
-            ctx.fillStyle = `rgba(30, 58, 138, ${Math.max(0.42, cell.lum * 1.1)})`;
+            ctx.fillStyle = '#1E40AF';
           }
         } else {
           if (cell.lum > 0.62) {
@@ -577,7 +589,7 @@
           }
         }
 
-        ctx.fillText(cell.char, cell.x, cell.y);
+        ctx.fillText(drawChar, cell.x, cell.y);
       }
 
       const keepLooping = updatePhysics();

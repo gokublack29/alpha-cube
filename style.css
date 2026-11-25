@@ -603,6 +603,10 @@ body {
   background-color: var(--surface-card);
 }
 
+[data-theme="light"] .ascii-canvas {
+  background-color: #EDF2FA;
+}
+
 .portrait-status-bar {
   display: flex;
   align-items: center;
