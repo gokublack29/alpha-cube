@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alpha cube | Full-Stack Development and Post-Deployment Engineering</title>
-  <meta name="description" content="Alpha cube builds high-throughput web applications and backend systems for growing teams, then protects them with 24/7 post-deployment care.">
+  <title>Alpha cube - Full-stack web development and 24/7 production support</title>
+  <meta name="description" content="Alpha cube builds high-throughput web apps and backend systems for growing teams, backed by senior engineers on call 24/7.">
 
   <!-- Open Graph / Social Media Preview -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gokublack29.github.io/alpha-cube/">
-  <meta property="og:title" content="Alpha cube | Full-Stack Development and Post-Deployment Engineering">
-  <meta property="og:description" content="Alpha cube builds high-throughput web applications and backend systems for growing teams, then protects them with 24/7 post-deployment care.">
+  <meta property="og:title" content="Alpha cube - Full-stack web development and 24/7 production support">
+  <meta property="og:description" content="Alpha cube builds high-throughput web apps and backend systems for growing teams, backed by senior engineers on call 24/7.">
   <meta property="og:image" content="https://gokublack29.github.io/alpha-cube/assets/og-preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Alpha cube engineering studio preview with 24/7 operational telemetry">
+  <meta property="og:image:alt" content="Alpha cube engineering studio preview">
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://gokublack29.github.io/alpha-cube/">
-  <meta name="twitter:title" content="Alpha cube | Full-Stack Development and Post-Deployment Engineering">
-  <meta name="twitter:description" content="Alpha cube builds high-throughput web applications and backend systems for growing teams, then protects them with 24/7 post-deployment care.">
+  <meta name="twitter:title" content="Alpha cube - Full-stack web development and 24/7 production support">
+  <meta name="twitter:description" content="Alpha cube builds high-throughput web apps and backend systems for growing teams, backed by senior engineers on call 24/7.">
   <meta name="twitter:image" content="https://gokublack29.github.io/alpha-cube/assets/og-preview.png">
   <meta name="page-type" content="software">
   <meta name="site-kind" content="software">
@@ -29,239 +29,232 @@
     try {
       const savedTheme = localStorage.getItem('theme') || 'dark';
       document.documentElement.setAttribute('data-theme', savedTheme);
-      document.querySelector('meta[name="color-scheme"]').content = savedTheme;
+      const schemeMeta = document.querySelector('meta[name="color-scheme"]');
+      if (schemeMeta) schemeMeta.content = savedTheme === 'light' ? 'light' : 'dark';
     } catch (e) {}
   </script>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Geist+Mono:wght@400;500;600&family=Saira:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              cobalt: '#09318d',
-              navy: '#050e24',
-              surface: '#091a44',
-              raised: '#0f245c',
-              pink: '#fd91cc',
-              pinkHover: '#fcafd7',
-              white: '#ffffff',
-            }
-          },
-          fontFamily: {
-            pixel: ['"Geist Pixel"', 'monospace'],
-            sans: ['Saira', 'system-ui', 'sans-serif'],
-            mono: ['"Geist Mono"', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand-lockup" aria-label="Alpha cube home">
+        <img src="assets/logo.png" alt="" class="brand-mark" width="36" height="36">
+        <span class="brand-title">Alpha cube</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services" class="nav-link">Capabilities</a>
+        <a href="#team" class="nav-link">Founders</a>
+        <a href="#stories" class="nav-link">Case Stories</a>
+      </nav>
+
+      <div class="header-controls">
+        <button id="theme-toggle" type="button" class="icon-btn theme-switch" aria-label="Switch to light theme" aria-pressed="false">
+          <svg class="sun-icon pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M13 22h-2v-3h2v3Zm-6-3H5v-2h2v2Zm12 0h-2v-2h2v2Zm-4-2H9v-2h6v2Zm-6-2H7V9h2v6Zm8 0h-2V9h2v6ZM5 13H2v-2h3v2Zm17 0h-3v-2h3v2Zm-7-4H9V7h6v2ZM7 7H5V5h2v2Zm12 0h-2V5h2v2Zm-6-2h-2V2h2v3Z"/>
+          </svg>
+          <svg class="moon-icon pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M18 22H8v-2h10v2ZM8 20H6v-2h2v2Zm12 0h-2v-2h2v2ZM6 18H4v-2h2v2Zm16 0h-2v-4h-2v-2h2v-2h2v8ZM4 16H2V6h2v10Zm14 0h-6v-2h6v2Zm-6-2h-2v-2h2v2Zm-2-2H8V6h2v6ZM6 6H4V4h2v2Zm8-2h-2v2h-2V4H6V2h8v2Z"/>
+          </svg>
+        </button>
+
+        <button type="button" class="btn-primary header-cta trigger-modal">
+          <span>Start a Project</span>
+          <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
+          </svg>
+        </button>
+
+        <button id="mobile-menu-btn" type="button" class="icon-btn mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg class="menu-open-icon pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M20 18H4v-2h16v2Zm0-5H4v-2h16v2Zm0-5H4V6h16v2Z"/>
+          </svg>
+          <svg class="menu-close-icon pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M7 19H5V17H7V19ZM19 19H17V17H19V19ZM9 15V17H7V15H9ZM17 17H15V15H17V17ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM13 13H11V11H13V13ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM9 9H7V7H9V9ZM17 9H15V7H17V9ZM7 7H5V5H7V7ZM19 7H17V5H19V7Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Solid Opaque Mobile Navigation Sheet (Outside backdrop-filter header) -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" hidden>
+    <nav class="mobile-nav-links" aria-label="Mobile">
+      <a href="#services" class="mobile-nav-link">Capabilities</a>
+      <a href="#team" class="mobile-nav-link">Founders</a>
+      <a href="#stories" class="mobile-nav-link">Case Stories</a>
+      <button type="button" class="btn-primary mobile-cta-btn trigger-modal">
+        <span>Start a Project</span>
+        <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
+        </svg>
+      </button>
+    </nav>
+  </div>
+
   <div class="site-shell">
-    <!-- Navigation -->
-    <header class="site-header floating-liquid-glass">
-      <div class="header-inner">
-        <a href="#" class="brand-lockup" aria-label="Alpha cube homepage">
-          <img src="assets/logo.png" alt="Alpha cube logo" class="brand-mark" width="40" height="40">
-          <span class="brand-title">Alpha cube</span>
-          <span class="brand-badge">Full-Stack Studio</span>
-        </a>
-
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="#services" class="nav-link">Capabilities</a>
-          <a href="#team" class="nav-link">Founders</a>
-          <a href="#stories" class="nav-link">Case Stories</a>
-        </nav>
-
-        <div class="header-controls">
-          <button id="theme-toggle" class="theme-switch" aria-label="Toggle dark and light theme" title="Toggle theme">
-            <svg class="sun-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-              <path d="M13 22h-2v-3h2v3Zm-6-3H5v-2h2v2Zm12 0h-2v-2h2v2Zm-4-2H9v-2h6v2Zm-6-2H7V9h2v6Zm8 0h-2V9h2v6ZM5 13H2v-2h3v2Zm17 0h-3v-2h3v2Zm-7-4H9V7h6v2ZM7 7H5V5h2v2Zm12 0h-2V5h2v2Zm-6-2h-2V2h2v3Z"/>
-            </svg>
-            <svg class="moon-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-              <path d="M18 22H8v-2h10v2ZM8 20H6v-2h2v2Zm12 0h-2v-2h2v2ZM6 18H4v-2h2v2Zm16 0h-2v-4h-2v-2h2v-2h2v8ZM4 16H2V6h2v10Zm14 0h-6v-2h6v2Zm-6-2h-2v-2h2v2Zm-2-2H8V6h2v6ZM6 6H4V4h2v2Zm8-2h-2v2h-2V4H6V2h8v2Z"/>
-            </svg>
-          </button>
-          <button class="btn-primary header-cta trigger-modal">
-            <span>Start a Project</span>
-            <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-              <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
-            </svg>
-          </button>
-          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-            <svg class="menu-open-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-              <path d="M20 18H4v-2h16v2Zm0-5H4v-2h16v2Zm0-5H4V6h16v2Z"/>
-            </svg>
-            <svg class="menu-close-icon pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-              <path d="M7 19H5V17H7V19ZM19 19H17V17H19V19ZM9 15V17H7V15H9ZM17 17H15V15H17V17ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM13 13H11V11H13V13ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM9 9H7V7H9V9ZM17 9H15V7H17V9ZM7 7H5V5H7V7ZM19 7H17V5H19V7Z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Floating Liquid Glass Drawer -->
-      <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
-        <nav class="mobile-nav-links">
-          <a href="#services" class="mobile-nav-link">Capabilities</a>
-          <a href="#team" class="mobile-nav-link">Founders</a>
-          <a href="#stories" class="mobile-nav-link">Case Stories</a>
-          <button class="btn-primary mobile-cta-btn trigger-modal">Start a Project</button>
-        </nav>
-      </div>
-    </header>
-
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <!-- Hero Section -->
       <section class="hero-stage" data-enter>
         <div class="hero-grid">
           <div class="hero-editorial">
             <h1 class="hero-headline">
-              Full-stack development and 24/7 post-deployment engineering.
+              Full-stack apps built to ship, protected 24/7.
             </h1>
             <p class="hero-lead">
-              Alpha cube builds production web applications and backend systems for growing teams, with senior engineers on call around the clock.
+              Alpha cube builds high-throughput web applications and backend systems for growing teams, with senior engineers on call around the clock.
             </p>
 
             <div class="hero-actions">
-              <button class="btn-primary btn-large trigger-modal">
+              <button type="button" class="btn-primary btn-large trigger-modal">
                 <span>Start a Project</span>
                 <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                   <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
                 </svg>
               </button>
-              <a href="#services" class="btn-secondary btn-large">See Our Capabilities</a>
+              <a href="#services" class="btn-secondary btn-large">View Capabilities</a>
             </div>
 
-            <div class="hero-proof-bar">
-              <div class="proof-pill">
+            <ul class="hero-proof-bar" aria-label="Studio delivery facts">
+              <li class="proof-item">
                 <span class="proof-dot" aria-hidden="true"></span>
-                <span class="proof-val">50+</span>
-                <span class="proof-label">Web Apps Shipped</span>
-              </div>
-              <div class="proof-pill">
+                <span><strong>50+</strong> apps shipped</span>
+              </li>
+              <li class="proof-item">
                 <span class="proof-dot" aria-hidden="true"></span>
-                <span class="proof-val">99.99%</span>
-                <span class="proof-label">Production SLA</span>
-              </div>
-              <div class="proof-pill">
+                <span><strong>15-min</strong> incident response</span>
+              </li>
+              <li class="proof-item">
                 <span class="proof-dot" aria-hidden="true"></span>
-                <span class="proof-val">15-Min</span>
-                <span class="proof-label">Midnight Response</span>
-              </div>
-            </div>
+                <span>Direct senior engineers</span>
+              </li>
+            </ul>
           </div>
 
           <div class="hero-visual">
             <div class="portrait-card" id="hero-portrait-card">
-              <div class="portrait-halo" aria-hidden="true"></div>
-              <img id="hero-saul-img" src="assets/saul-dark.png" alt="Engineering leadership at Alpha cube" class="portrait-source-img" width="560" height="620">
-              <canvas id="hero-ascii-canvas" class="ascii-canvas" aria-label="Interactive ASCII leadership portrait"></canvas>
-              <div class="incident-status-pill liquid-glass-capsule">
-                <span class="pulse-indicator" aria-hidden="true"></span>
-                <div class="status-content">
-                  <span class="status-title">Production Systems: Operational</span>
-                  <span class="status-sub">24/7 Senior Engineers On-Call</span>
-                </div>
-                <span class="status-ascii-pill" id="hero-status-ascii" aria-hidden="true">[99.99%::OK]</span>
+              <canvas id="hero-ascii-canvas" class="ascii-canvas" role="img" aria-label="Interactive ASCII portrait representing Alpha cube 24/7 engineering support"></canvas>
+              <div class="portrait-status-bar">
+                <span class="status-dot-static" aria-hidden="true"></span>
+                <span class="status-title">24/7 On-Call Engineering</span>
+                <span class="status-ascii-pill" aria-hidden="true">[24/7::ACTIVE]</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Services Bento Grid -->
+      <!-- Capabilities Bento Grid (6-Column Asymmetric: 4+2, 2+4, 3+3) -->
       <section class="section-container" id="services">
         <div class="section-headline-block">
-          <h2 class="section-heading">Web applications and backend architecture</h2>
-          <p class="section-lead">Full lifecycle engineering. From day one architecture through midnight production support.</p>
+          <h2 class="section-heading">Web applications and backend systems</h2>
+          <p class="section-lead">One engineering team from initial architecture through post-deployment maintenance.</p>
         </div>
 
         <div class="bento-matrix">
-          <!-- Card 1: Large Featured Web Applications -->
-          <article class="bento-tile tile-wide">
-            <div class="tile-content">
+          <!-- Tile 1 (Span 4): Web Applications -->
+          <article class="bento-tile tile-span-4 tile-split">
+            <div class="tile-main">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                     <path d="M4 2h16v2H4zm0 14h16v2H4zM2 4h2v12H2zm18 0h2v12h-2zm-9 14h2v2h-2zm-3 2h8v2H8z"/>
                   </svg>
                 </div>
-                <span class="tile-tag">Frontend & Client Core</span>
+                <span class="tile-tag">Frontend &amp; Client</span>
               </div>
               <h3 class="tile-title">Full-Stack Web Applications</h3>
               <p class="tile-text">
-                Production web applications engineered for responsiveness, accessibility, and high transaction volume. We build web interfaces with Next.js, React, and TypeScript that render in milliseconds and maintain fast response times under heavy traffic.
+                Web applications engineered with Next.js, React, and TypeScript for fast first-paint rendering, accessible interfaces, and high transaction volume.
               </p>
               <div class="tech-pills">
-                <span class="tech-pill"><img src="assets/icons/nextjs.svg" alt="" width="14" height="14" class="tech-icon"> Next.js</span>
-                <span class="tech-pill"><img src="assets/icons/react.svg" alt="" width="14" height="14" class="tech-icon"> React</span>
-                <span class="tech-pill"><img src="assets/icons/typescript.svg" alt="" width="14" height="14" class="tech-icon"> TypeScript</span>
+                <span class="tech-pill"><img src="assets/icons/nextjs.svg" alt="" width="16" height="16" class="tech-icon"> Next.js</span>
+                <span class="tech-pill"><img src="assets/icons/react.svg" alt="" width="16" height="16" class="tech-icon"> React</span>
+                <span class="tech-pill"><img src="assets/icons/typescript.svg" alt="" width="16" height="16" class="tech-icon"> TypeScript</span>
+              </div>
+            </div>
+
+            <div class="tile-aside-spec" aria-label="Frontend engineering standards">
+              <div class="spec-row">
+                <span class="spec-key">Rendering</span>
+                <span class="spec-val">SSR &amp; Edge Streaming</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Type Safety</span>
+                <span class="spec-val">End-to-End Schema</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Accessibility</span>
+                <span class="spec-val">WCAG AA Keyboard</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key">Core Vitals</span>
+                <span class="spec-val">Sub-100ms INP Target</span>
               </div>
             </div>
           </article>
 
-          <!-- Card 2: Backend Architecture -->
-          <article class="bento-tile tile-standard">
-            <div class="tile-content">
+          <!-- Tile 2 (Span 2): Backend Systems -->
+          <article class="bento-tile tile-span-2">
+            <div class="tile-main">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                     <path d="M6 7h4v2H6zm0 8h4v2H6zM2 5h2v14H2zm18 0h2v14h-2zM4 19h16v2H4zM4 3h16v2H4zm0 8h16v2H4z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">Backend Systems</span>
               </div>
-              <h3 class="tile-title">Resilient Distributed Backends</h3>
+              <h3 class="tile-title">Distributed Backends &amp; APIs</h3>
               <p class="tile-text">
-                High-throughput microservices, relational and caching data stores, and low-latency API layers that sustain millions of daily requests without slowdowns.
+                High-throughput services, PostgreSQL and Redis data stores, and low-latency APIs that hold steady under traffic spikes.
               </p>
-              <div class="tech-pills">
-                <span class="tech-pill"><img src="assets/icons/nodejs.svg" alt="" width="14" height="14" class="tech-icon"> Node.js</span>
-                <span class="tech-pill"><img src="assets/icons/python.svg" alt="" width="14" height="14" class="tech-icon"> Python</span>
-                <span class="tech-pill"><img src="assets/icons/postgres.svg" alt="" width="14" height="14" class="tech-icon"> PostgreSQL</span>
-                <span class="tech-pill"><img src="assets/icons/redis.svg" alt="" width="14" height="14" class="tech-icon"> Redis</span>
-              </div>
+            </div>
+            <div class="tech-pills">
+              <span class="tech-pill"><img src="assets/icons/nodejs.svg" alt="" width="16" height="16" class="tech-icon"> Node.js</span>
+              <span class="tech-pill"><img src="assets/icons/python.svg" alt="" width="16" height="16" class="tech-icon"> Python</span>
+              <span class="tech-pill"><img src="assets/icons/postgres.svg" alt="" width="16" height="16" class="tech-icon"> PostgreSQL</span>
+              <span class="tech-pill"><img src="assets/icons/redis.svg" alt="" width="16" height="16" class="tech-icon"> Redis</span>
             </div>
           </article>
 
-          <!-- Card 3: Design Systems -->
-          <article class="bento-tile tile-standard">
-            <div class="tile-content">
+          <!-- Tile 3 (Span 2): Product UI & Design Systems -->
+          <article class="bento-tile tile-span-2">
+            <div class="tile-main">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                     <path d="M8 14H7v6H5v-6H2v-2h6v2Zm5 6h-2V10h2v10Zm9-2h-3v2h-2v-2h-1v-2h6v2Zm-3-4h-2V4h2v10ZM7 10H5V4h2v6Zm6-4h2v2H9V6h2V4h2v2Z"/>
                   </svg>
                 </div>
                 <span class="tile-tag">Design Systems</span>
               </div>
-              <h3 class="tile-title">UI/UX & Product Architecture</h3>
+              <h3 class="tile-title">Product UI &amp; Design Systems</h3>
               <p class="tile-text">
-                Distinct design identities that reject generic templates. We construct component libraries, ergonomic interaction patterns, and cohesive design tokens.
+                Component libraries, design tokens, and WCAG AA interfaces built from Figma to production code.
               </p>
-              <div class="tech-pills">
-                <span class="tech-pill"><img src="assets/icons/figma.svg" alt="" width="14" height="14" class="tech-icon"> Figma</span>
-                <span class="tech-pill">Design Tokens</span>
-                <span class="tech-pill">WCAG AA</span>
-              </div>
+            </div>
+            <div class="tech-pills">
+              <span class="tech-pill"><img src="assets/icons/figma.svg" alt="" width="16" height="16" class="tech-icon"> Figma</span>
+              <span class="tech-pill">Design Tokens</span>
+              <span class="tech-pill">WCAG AA</span>
             </div>
           </article>
 
-          <!-- Card 4: Midnight Incident Recovery (Highlighted Accent) -->
-          <article class="bento-tile tile-accent">
-            <div class="tile-content">
+          <!-- Tile 4 (Span 4, Highlighted): 24/7 Midnight Incident Recovery -->
+          <article class="bento-tile tile-span-4 tile-accent tile-split">
+            <div class="tile-main">
               <div class="tile-header">
                 <div class="tile-icon-box box-accent">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                     <path d="M4 13h8v6h2v2h-2v2h-2v-8H2v-4h2v2Zm12 6h-2v-2h2v2Zm2-2h-2v-2h2v2Zm2-2h-2v-2h2v2Zm-6-6h8v4h-2v-2h-8V5h-2V3h2V1h2v8Zm-8 2H4V9h2v2Zm2-2H6V7h2v2Zm2-2H8V5h2v2Z"/>
                   </svg>
                 </div>
@@ -269,32 +262,30 @@
               </div>
               <h3 class="tile-title">24/7 Midnight Incident Recovery</h3>
               <p class="tile-text">
-                When a database deadlocks or a payment service crashes at 2:00 AM, you reach senior engineers directly. We diagnose the breakdown, patch the root cause, and bring your services back to green within fifteen minutes.
+                When a database deadlocks or a checkout API stalls at 2:00 AM, you reach the engineers who wrote it. We diagnose the root cause and restore service within 15 minutes.
               </p>
-
-              <!-- Liquid Glass ASCII Telemetry Window -->
-              <div class="liquid-glass-telemetry" id="bento-ascii-telemetry" aria-label="Live ASCII incident telemetry monitor">
-                <div class="telemetry-bar">
-                  <span class="telemetry-dot" aria-hidden="true"></span>
-                  <span class="telemetry-title">SYS_BUS // ACTIVE</span>
-                  <span class="telemetry-ping" id="telemetry-ping-val">12ms</span>
-                </div>
-                <pre class="telemetry-ascii-stream" id="telemetry-stream" aria-hidden="true"></pre>
-              </div>
-
               <div class="callout-badge">
                 <span class="callout-indicator" aria-hidden="true"></span>
-                <span>Average Recovery Time: 14 Minutes</span>
+                <span>Average recovery time: 14 minutes</span>
               </div>
+            </div>
+
+            <div class="telemetry-pane" id="bento-ascii-telemetry" role="button" tabindex="0" aria-label="Interactive incident bus console, activate to inspect live ping">
+              <div class="telemetry-bar">
+                <span class="telemetry-dot" aria-hidden="true"></span>
+                <span class="telemetry-title">SYS_BUS // ACTIVE</span>
+                <span class="telemetry-ping" id="telemetry-ping-val">12ms</span>
+              </div>
+              <pre class="telemetry-ascii-stream" id="telemetry-stream" aria-hidden="true"></pre>
             </div>
           </article>
 
-          <!-- Card 5: Post-Deployment Maintenance -->
-          <article class="bento-tile tile-standard">
-            <div class="tile-content">
+          <!-- Tile 5 (Span 3): Post-Deployment Care -->
+          <article class="bento-tile tile-span-3">
+            <div class="tile-main">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                     <path d="M4 2h16v2H4zM2 4h2v10H2zm18 0h2v10h-2zM4 14h2v2H4zm2 2h2v2H6zm4 4h4v2h-4zm10-6h-2v2h2zm-2 2h-2v2h2zm-2 2h-2v2h2zm-6 0H8v2h2z"/>
                   </svg>
                 </div>
@@ -302,36 +293,36 @@
               </div>
               <h3 class="tile-title">Post-Deployment Care</h3>
               <p class="tile-text">
-                Most agencies abandon code after handover. We provide automated vulnerability patching and continuous query monitoring.
+                Most agencies hand over a repo and disappear. We handle dependency updates, security patches, and slow query profiling after launch.
               </p>
-              <div class="tech-pills">
-                <span class="tech-pill">Continuous Monitoring</span>
-                <span class="tech-pill">Security Patches</span>
-              </div>
+            </div>
+            <div class="tech-pills">
+              <span class="tech-pill">Continuous Monitoring</span>
+              <span class="tech-pill">Security Patches</span>
             </div>
           </article>
 
-          <!-- Card 6: Cloud & DevOps -->
-          <article class="bento-tile tile-standard">
-            <div class="tile-content">
+          <!-- Tile 6 (Span 3): Cloud & DevOps -->
+          <article class="bento-tile tile-span-3">
+            <div class="tile-main">
               <div class="tile-header">
                 <div class="tile-icon-box">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                     <path d="M11 18H9v-4h2v4Zm-4-1H5v-2h2v2Zm12-2v2h-2v-2h2ZM5 15H3v-2h2v2Zm16 0h-2v-2h2v2Zm-8-1h-2v-4h2v4ZM3 13H1v-2h2v2Zm20 0h-2v-2h2v2ZM5 11H3V9h2v2Zm16 0h-2V9h2v2Zm-6-1h-2V6h2v4ZM7 9H5V7h2v2Zm12 0h-2V7h2v2Z"/>
                   </svg>
                 </div>
-                <span class="tile-tag">DevOps & Cloud</span>
+                <span class="tile-tag">DevOps &amp; Cloud</span>
               </div>
-              <h3 class="tile-title">Cloud Infrastructure & CI/CD</h3>
+              <h3 class="tile-title">Cloud Infrastructure &amp; CI/CD</h3>
               <p class="tile-text">
-                Containerized environments and automated deployment pipelines built on AWS with instant rollback guarantees.
+                Containerized deployments on AWS with automated pipelines, health checks, and instant rollbacks.
               </p>
-              <div class="tech-pills">
-                <span class="tech-pill"><img src="assets/icons/docker.svg" alt="" width="14" height="14" class="tech-icon"> Docker</span>
-                <span class="tech-pill">Kubernetes</span>
-                <span class="tech-pill">AWS</span>
-                <span class="tech-pill">CI/CD</span>
-              </div>
+            </div>
+            <div class="tech-pills">
+              <span class="tech-pill"><img src="assets/icons/docker.svg" alt="" width="16" height="16" class="tech-icon"> Docker</span>
+              <span class="tech-pill">Kubernetes</span>
+              <span class="tech-pill">AWS</span>
+              <span class="tech-pill">CI/CD</span>
             </div>
           </article>
         </div>
@@ -341,106 +332,103 @@
       <section class="section-container" id="team">
         <div class="section-headline-block">
           <h2 class="section-heading">Meet the founders</h2>
-          <p class="section-lead">The engineers who personally architect, write, and safeguard your software.</p>
+          <p class="section-lead">The four engineers who design, write, and maintain your software.</p>
         </div>
 
         <div class="founders-stage">
-          <div class="founders-media liquid-glass-frame">
+          <div class="founders-media">
             <div class="founders-backdrop" aria-hidden="true"></div>
-            <img src="assets/team-dark.png" alt="Alpha cube founders Jayadithya, Gurubaravikkram, Dinesh Kumar, and Hemanth" class="founders-photo" width="920" height="560" loading="lazy">
+            <img src="assets/team-dark.png" alt="Alpha cube founders shaking hands" class="founders-photo" width="600" height="600">
           </div>
 
           <div class="founders-roster">
-            <div class="founder-card">
-              <div class="founder-header">
-                <div class="founder-title-wrap">
+            <article class="founder-card">
+              <div>
+                <div class="founder-header">
                   <h3 class="founder-name">Jayadithya</h3>
-                  <span class="founder-role">Founder</span>
+                  <span class="founder-tag">Systems &amp; Backend</span>
                 </div>
-                <span class="founder-tag">Systems & Backend</span>
+                <p class="founder-bio">
+                  Architects high-concurrency backend services and real-time data pipelines. Leads midnight incident triage and database recovery.
+                </p>
               </div>
-              <p class="founder-bio">
-                Specializes in high-concurrency backend services, real-time data pipelines, and deep debugging. Leads emergency midnight incident triage and architectural hardening.
-              </p>
               <div class="founder-skills">
                 <span class="skill-pill">Full-Stack Architecture</span>
                 <span class="skill-pill">Distributed Databases</span>
                 <span class="skill-pill">Zero-Downtime Migration</span>
               </div>
-            </div>
+            </article>
 
-            <div class="founder-card">
-              <div class="founder-header">
-                <div class="founder-title-wrap">
+            <article class="founder-card">
+              <div>
+                <div class="founder-header">
                   <h3 class="founder-name">Gurubaravikkram</h3>
-                  <span class="founder-role">Founder</span>
+                  <span class="founder-tag">Cloud &amp; Strategy</span>
                 </div>
-                <span class="founder-tag">Cloud & Strategy</span>
+                <p class="founder-bio">
+                  Guides client product roadmaps, cloud scaling, and service-level agreements so releases ship on schedule.
+                </p>
               </div>
-              <p class="founder-bio">
-                Specializes in client product execution, cloud infrastructure scaling, and SLA enforcement. Ensures every feature release lands on schedule with zero unexpected surprises.
-              </p>
               <div class="founder-skills">
                 <span class="skill-pill">Cloud Infrastructure</span>
                 <span class="skill-pill">Product Strategy</span>
-                <span class="skill-pill">Security & SLA Oversight</span>
+                <span class="skill-pill">Security &amp; SLA Oversight</span>
               </div>
-            </div>
+            </article>
 
-            <div class="founder-card">
-              <div class="founder-header">
-                <div class="founder-title-wrap">
+            <article class="founder-card">
+              <div>
+                <div class="founder-header">
                   <h3 class="founder-name">Dinesh Kumar</h3>
-                  <span class="founder-role">Founder</span>
+                  <span class="founder-tag">Frontend &amp; UI</span>
                 </div>
-                <span class="founder-tag">Frontend & UI</span>
+                <p class="founder-bio">
+                  Directs clientside architecture, component systems, and rendering speed for responsive, accessible web apps.
+                </p>
               </div>
-              <p class="founder-bio">
-                Directs frontend architecture, design system implementation, and clientside performance. Ensures web applications deliver sub-second response times and accessible interactions.
-              </p>
               <div class="founder-skills">
-                <span class="skill-pill">Next.js & React</span>
+                <span class="skill-pill">Next.js &amp; React</span>
                 <span class="skill-pill">Design Systems</span>
                 <span class="skill-pill">Performance Tuning</span>
               </div>
-            </div>
+            </article>
 
-            <div class="founder-card">
-              <div class="founder-header">
-                <div class="founder-title-wrap">
+            <article class="founder-card">
+              <div>
+                <div class="founder-header">
                   <h3 class="founder-name">Hemanth</h3>
-                  <span class="founder-role">Founder</span>
+                  <span class="founder-tag">DevOps &amp; Security</span>
                 </div>
-                <span class="founder-tag">DevOps & Security</span>
+                <p class="founder-bio">
+                  Builds containerized deployment pipelines, cloud network defenses, and automated failover configurations.
+                </p>
               </div>
-              <p class="founder-bio">
-                Oversees containerized deployment pipelines, cloud network security, and server reliability. Ensures zero-downtime rolling updates and automated failover configurations.
-              </p>
               <div class="founder-skills">
-                <span class="skill-pill">Docker & Kubernetes</span>
+                <span class="skill-pill">Docker &amp; Kubernetes</span>
                 <span class="skill-pill">CI/CD Automation</span>
                 <span class="skill-pill">Site Reliability</span>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- Client Stories -->
+      <!-- Case Stories Section -->
       <section class="section-container" id="stories">
         <div class="section-header-split">
           <div class="section-headline-block no-margin">
             <h2 class="section-heading">Real stories from production</h2>
-            <p class="section-lead">Direct feedback from founders and engineering leaders whose systems we protect.</p>
+            <p class="section-lead">Feedback from founders and engineering leads whose systems we run.</p>
           </div>
-          <div class="carousel-nav" aria-label="Client testimonials navigation">
-            <button id="prev-story" class="carousel-btn" aria-label="Previous story">
-              <svg class="pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <div class="carousel-nav" aria-label="Client story navigation">
+            <span id="story-counter" class="story-counter" aria-live="polite">1 / 2</span>
+            <button id="prev-story" type="button" class="carousel-btn" aria-label="Previous story">
+              <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                 <path d="M8 13v-2h2v2H8Zm2-2V9h2v2h-2Zm0 4v-2h2v2h-2Zm2-6V7h2v2h-2Zm0 8v-2h2v2h-2Zm2-10V5h2v2h-2Zm0 12v-2h2v2h-2Z"/>
               </svg>
             </button>
-            <button id="next-story" class="carousel-btn" aria-label="Next story">
-              <svg class="pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <button id="next-story" type="button" class="carousel-btn" aria-label="Next story">
+              <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
                 <path d="M16 13v-2h-2v2h2Zm-2-2V9h-2v2h2Zm0 4v-2h-2v2h2Zm-2-6V7h-2v2h2Zm0 8v-2h-2v2h2ZM10 7V5H8v2h2Zm0 12v-2H8v2h2Z"/>
               </svg>
             </button>
@@ -448,14 +436,13 @@
         </div>
 
         <div class="stories-track" id="stories-slider">
-          <!-- Story 1: Nandhini -->
           <article class="story-panel active" data-story="0">
             <div class="story-inner">
               <div class="story-rating">
                 <span class="metric-badge">100% On-Time Delivery</span>
               </div>
               <blockquote class="story-quote-text">
-                "The web platform Alpha cube engineered completely exceeded what our board expected. The codebase is clean, page transitions render in milliseconds, and they launched our portal two weeks ahead of schedule."
+                "The web platform Alpha cube built exceeded what our board expected. The codebase stays clean, transitions run fast, and they launched our portal two weeks ahead of schedule."
               </blockquote>
               <div class="story-client">
                 <div class="client-avatar" aria-hidden="true">N</div>
@@ -467,14 +454,13 @@
             </div>
           </article>
 
-          <!-- Story 2: Jackson -->
-          <article class="story-panel active" data-story="1">
+          <article class="story-panel" data-story="1">
             <div class="story-inner">
               <div class="story-rating">
                 <span class="metric-badge">14-Min Incident Recovery</span>
               </div>
               <blockquote class="story-quote-text">
-                "When our payment gateway backend choked at 1:30 AM during a peak traffic campaign, Alpha cube was in our production logs within eight minutes. They resolved the concurrency lock and restored transactions before morning."
+                "When our payment gateway deadlocked at 1:30 AM during a peak campaign, Alpha cube was in our logs within eight minutes and restored transactions before morning."
               </blockquote>
               <div class="story-client">
                 <div class="client-avatar" aria-hidden="true">J</div>
@@ -488,49 +474,47 @@
         </div>
       </section>
 
-      <!-- Closing CTA Banner (Full Bleed High Energy) -->
+      <!-- Closing CTA Banner -->
       <section class="closing-stage" id="contact">
         <div class="closing-banner">
           <div class="closing-energy-beam" aria-hidden="true">
-            <div class="beam-layer beam-yellow"></div>
-            <div class="beam-layer beam-red"></div>
             <span class="beam-text">HEY, WHO ARE WE? WE ARE ALPHA CUBE.</span>
           </div>
 
           <div class="closing-content-grid">
             <div class="closing-performer">
-              <img src="assets/anirudh.png" alt="High energy Alpha cube team" class="performer-img" width="380" height="520" loading="lazy">
+              <img src="assets/anirudh.png" alt="Alpha cube studio team energy" class="performer-img" width="380" height="475">
             </div>
 
             <div class="closing-interaction">
               <div class="closing-brand">
-                <img src="assets/logo.png" alt="Alpha cube emblem" class="closing-logo" width="48" height="48">
+                <img src="assets/logo.png" alt="" class="closing-logo" width="40" height="40">
                 <span class="closing-brand-title">Alpha cube</span>
               </div>
-              <h2 class="closing-heading">Ready to build software that stands up to production?</h2>
+              <h2 class="closing-heading">Ready to ship software that holds up in production?</h2>
               <p class="closing-text">
-                Tell us about your upcoming project or reach out directly for emergency production support.
+                Share your project scope or email us directly for urgent production support.
               </p>
 
               <div class="direct-contact-actions">
-                <button class="btn-primary btn-large trigger-modal">
+                <button type="button" class="btn-primary btn-large trigger-modal">
                   <span>Start a Project</span>
                   <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                     <path d="M4 11v2h12v-2H4zm10-4v2h2V7h-2zm2 2v2h2V9h-2zm2 2v2h2v-2h-2zm-2 2v2h-2v-2h2zm-2 2v2h-2v-2h2z"/>
                   </svg>
                 </button>
                 <a href="mailto:convinceyoucoo16@gmail.com" class="direct-pill-btn">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                     <path d="M6 8h2v2H6zm2 2h2v2H8zm10-2h-2v2h2zm-2 2h-2v2h2zm-6 2h4v2h-4zM2 6h2v12H2zm18 0h2v12h-2zM4 4h16v2H4zm0 14h16v2H4z"/>
                   </svg>
-                  <span>Mail Us</span>
+                  <span>Email Us</span>
                 </a>
-                <a href="tel:+919876543210" class="direct-pill-btn">
-                  <svg class="pixel-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                    <path d="M4 1h5v2H4zm5 2h2v4H9zM7 7h2v4H7zm-3 5h2v2H4zM2 3h2v9H2zm7 8h2v2H9zm2 2h2v2h-2zm2 2h4v2h-4zm4-2h4v2h-4zm4 2h2v5h-2zM6 14h2v2H6zm2 2h2v2H8zm2 2h2v2h-2zm2 2h9v2h-9z"/>
+                <button type="button" id="copy-email-btn" class="direct-pill-btn">
+                  <svg class="pixel-icon pixel-icon-sm" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                    <path d="M4 2h12v2H6v12H4V2Zm4 4h12v16H8V6Zm2 2v12h8V8h-8Z"/>
                   </svg>
-                  <span>Call Us</span>
-                </a>
+                  <span id="copy-email-label">Copy Email</span>
+                </button>
               </div>
             </div>
           </div>
@@ -543,13 +527,13 @@
       <div class="footer-inner">
         <div class="footer-left">
           <div class="footer-brand">
-            <img src="assets/logo.png" alt="Alpha cube" class="footer-logo" width="32" height="32">
+            <img src="assets/logo.png" alt="" class="footer-logo" width="24" height="24">
             <span>Alpha cube</span>
           </div>
           <p class="footer-tagline">Full-stack development and post-deployment care.</p>
         </div>
         <div class="footer-right">
-          <span class="system-status"><span class="status-green-dot"></span> All systems operational</span>
+          <span class="system-status"><span class="status-green-dot" aria-hidden="true"></span> All systems operational</span>
           <span class="footer-copy">&copy; 2026 Alpha cube. All rights reserved.</span>
         </div>
       </div>
@@ -557,10 +541,10 @@
   </div>
 
   <!-- Contact Modal -->
-  <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading" aria-modal="true">
+  <dialog id="contact-dialog" class="contact-modal" aria-labelledby="modal-heading" closedby="any">
     <div class="modal-card">
-      <button id="close-modal" class="modal-close-btn" aria-label="Close dialog">
-        <svg class="pixel-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <button id="close-modal" type="button" class="modal-close-btn" aria-label="Close dialog">
+        <svg class="pixel-icon pixel-icon-lg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
           <path d="M7 19H5V17H7V19ZM19 19H17V17H19V19ZM9 15V17H7V15H9ZM17 17H15V15H17V17ZM11 15H9V13H11V15ZM15 15H13V13H15V15ZM13 13H11V11H13V13ZM11 11H9V9H11V11ZM15 11H13V9H15V11ZM9 9H7V7H9V9ZM17 9H15V7H17V9ZM7 7H5V5H7V7ZM19 7H17V5H19V7Z"/>
         </svg>
       </button>
@@ -568,57 +552,65 @@
       <!-- Form View -->
       <div id="modal-form-view">
         <div class="modal-header">
-          <h2 id="modal-heading" class="modal-title">Get in touch with Alpha cube</h2>
-          <p class="modal-sub">Tell us what you are building. You will receive an engineering estimate within twenty-four hours.</p>
+          <h2 id="modal-heading" class="modal-title">Start a project with Alpha cube</h2>
+          <p class="modal-sub">Share your timeline and requirements. We reply by email within 24 hours.</p>
         </div>
 
-        <form id="contact-form" class="modal-form">
+        <form id="contact-form" class="modal-form" novalidate>
           <div class="form-group">
             <label for="contact-name" class="form-label">Full Name</label>
-            <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Rivera" autocomplete="name" required>
+            <input type="text" id="contact-name" name="name" class="form-input" placeholder="Alex Rivera" autocomplete="name" required aria-describedby="contact-name-error">
+            <p id="contact-name-error" class="field-error" role="alert" hidden></p>
           </div>
 
           <div class="form-group">
             <label for="contact-email" class="form-label">Work Email</label>
-            <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@company.com" autocomplete="email" required>
+            <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@company.com" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" required aria-describedby="contact-email-error">
+            <p id="contact-email-error" class="field-error" role="alert" hidden></p>
           </div>
 
           <div class="form-group">
             <label for="contact-service" class="form-label">Primary Requirement</label>
-            <select id="contact-service" name="service" class="form-select" required>
+            <select id="contact-service" name="service" class="form-select" required aria-describedby="contact-service-error">
               <option value="" disabled selected>Select service focus</option>
-              <option value="web-app">Full-Stack Web Application</option>
-              <option value="backend">Resilient Backend & API Architecture</option>
-              <option value="incident">24/7 Midnight Incident Recovery</option>
-              <option value="care">Post-Deployment Care & Maintenance</option>
-              <option value="cloud">Cloud Infrastructure & DevOps</option>
+              <option value="Full-Stack Web Application">Full-Stack Web Application</option>
+              <option value="Distributed Backend & APIs">Distributed Backend &amp; APIs</option>
+              <option value="24/7 Midnight Incident Recovery">24/7 Midnight Incident Recovery</option>
+              <option value="Post-Deployment Care & Maintenance">Post-Deployment Care &amp; Maintenance</option>
+              <option value="Cloud Infrastructure & CI/CD">Cloud Infrastructure &amp; CI/CD</option>
             </select>
+            <p id="contact-service-error" class="field-error" role="alert" hidden></p>
           </div>
 
           <div class="form-group">
             <label for="contact-message" class="form-label">Project Details</label>
-            <textarea id="contact-message" name="message" class="form-textarea" rows="4" placeholder="Briefly describe your timeline, user volume, or current tech stack..." required></textarea>
+            <textarea id="contact-message" name="message" class="form-textarea" rows="4" placeholder="Timeline, stack, or active production issue..." required minlength="10" aria-describedby="contact-message-error"></textarea>
+            <p id="contact-message-error" class="field-error" role="alert" hidden></p>
           </div>
 
           <button type="submit" id="submit-btn" class="btn-primary btn-block">
-            <span class="btn-text">Submit Project Request</span>
-            <span class="btn-spinner" aria-hidden="true"></span>
+            <span class="btn-text">Prepare Project Brief</span>
           </button>
         </form>
       </div>
 
-      <!-- Success View -->
-      <div id="modal-success-view" class="modal-success" style="display: none;">
-        <div class="success-icon" aria-hidden="true">
-          <svg class="pixel-icon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
+      <!-- Ready / Handoff View -->
+      <div id="modal-success-view" class="modal-success" hidden>
+        <div class="success-header">
+          <svg class="pixel-icon pixel-icon-lg success-check" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
             <path d="M7 18H5v-2h2v2Zm6 0h-2v-2h2v2Zm-8-2H3v-2h2v2Zm4 0H7v-2h2v2Zm6-2v2h-2v-2h2ZM3 14H1v-2h2v2Zm8 0H9v-2h2v2Zm6 0h-2v-2h2v2Zm-4-2h-2v-2h2v2Zm6 0h-2v-2h2v2Zm-4-2h-2V8h2v2Zm6 0h-2V8h2v2Zm-4-2h-2V6h2v2Zm6 0h-2V6h2v2Z"/>
           </svg>
+          <h3 class="success-title">Your project brief is ready</h3>
         </div>
-        <h3 class="success-title">Message Received</h3>
         <p class="success-text">
-          Thank you for reaching out. Jayadithya or Gurubaravikkram will review your specifications and reply via email within twenty-four hours.
+          Send it straight to <strong>convinceyoucoo16@gmail.com</strong> using your email app, or copy the summary below.
         </p>
-        <button id="close-success-btn" class="btn-secondary btn-block">Return to Website</button>
+        <pre id="brief-preview" class="brief-preview"></pre>
+        <div class="success-actions">
+          <a id="mailto-handoff-link" href="mailto:convinceyoucoo16@gmail.com" class="btn-primary btn-block">Open in Email App</a>
+          <button id="copy-brief-btn" type="button" class="btn-secondary btn-block">Copy Project Brief</button>
+          <button id="edit-brief-btn" type="button" class="btn-ghost btn-block">Edit Details</button>
+        </div>
       </div>
     </div>
   </dialog>
