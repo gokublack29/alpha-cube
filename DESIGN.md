@@ -2,71 +2,67 @@
 
 ## Vision and Intent
 
-Alpha cube is an engineering agency that builds high-throughput software and maintains it post-deployment.
-The brand combines technical discipline with witty cultural energy.
-This redesign transforms an amateur poster layout into a production-grade digital experience.
-The interface communicates five-second clarity, authoritative craftsmanship, and distinct personality.
+Alpha cube is an engineering studio that builds production web applications and stays on call after launch.
+The interface pairs crisp dark and light architectural surfaces with retro-pixel telemetry and cultural wit.
+Both themes maintain full WCAG AA contrast, equal container edges, and responsive single-column collapse.
 
 ## Color Palette
 
-The design system supports dark and light modes through semantic tokens.
-All text pairings meet WCAG AA contrast standards with a minimum ratio of 4.5:1.
+All text pairings meet at least 4.5:1 contrast for body copy and 3:1 for large display headings and UI boundaries.
+Pure black (#000000) and decorative violet/purple glows are excluded.
 
 Dark Mode Tokens:
-- Background Canvas: #0A0D14
-- Surface Card: #121722
-- Surface Raised: #1A2130
-- Primary Text: #F1F5F9
-- Secondary Text: #94A3B8
-- Border Subtle: rgba(255, 255, 255, 0.08)
-- Border Focused: #00D17C
-- Accent Emerald: #00D17C
-- Accent Violet: #8B5CF6
-- Accent Amber: #F59E0B
-- Accent Crimson: #EF4444
+- Background Canvas: #050E24
+- Surface Card: #091A44
+- Surface Raised: #0F245C
+- Surface Input: #071538
+- Primary Text: #F8FAFC
+- Secondary Text: #CBD8F6
+- Muted Text: #94A8D4
+- Border Subtle: rgba(253, 145, 204, 0.14)
+- Border Strong: rgba(253, 145, 204, 0.30)
+- Primary Accent / CTA Fill: #FD91CC
+- Primary CTA Ink: #050E24
 
 Light Mode Tokens:
-- Background Canvas: #F8FAFC
+- Background Canvas: #F7F9FC
 - Surface Card: #FFFFFF
-- Surface Raised: #F1F5F9
-- Primary Text: #0F172A
-- Secondary Text: #475569
-- Border Subtle: rgba(15, 23, 42, 0.08)
-- Border Focused: #059669
-- Accent Emerald: #059669
-- Accent Violet: #7C3AED
-- Accent Amber: #D97706
-- Accent Crimson: #DC2626
+- Surface Raised: #EEF3FA
+- Surface Input: #FFFFFF
+- Primary Text: #0B132B
+- Secondary Text: #364156
+- Muted Text: #4E5D78
+- Border Subtle: rgba(11, 19, 43, 0.12)
+- Border Strong: rgba(9, 49, 141, 0.28)
+- Primary Accent / CTA Fill: #09318D
+- Primary CTA Ink: #FFFFFF
+- Secondary Rose Ink (AA on light): #B01E6E
+- Rose Surface Tint: rgba(253, 145, 204, 0.18)
 
 ## Typography
 
-The typography couples an engineering-grade sans-serif with refined editorial italic accents.
-Headings carry their own visual weight without artificial eyebrows or kickers.
+Headings and body copy use Saira paired with Geist Pixel for UI labels and Geist Mono for telemetry output.
+Geist Pixel always renders at weight 400 to prevent synthetic bold grid smearing.
+Minimum functional UI label size is 12px.
 
-- UI and Body Typeface: Inter, system-ui, sans-serif
-- Editorial Accent Typeface: Playfair Display, Georgia, serif
-- Display Energy Typeface: Bangers, Impact, sans-serif
-- Body Measure: 65 to 75 characters per line
-- Scale Ratio: 1.25 major third scale
+- UI and Body Typeface: Saira, system-ui, sans-serif
+- Pixel Display Typeface: Geist Pixel, monospace (weight 400 only)
+- Monospace Telemetry Typeface: Geist Mono, monospace
+- Body Measure: 60 to 68 characters per line
+- Pixel Icon Grid: 16px and 24px inline SVGs only
 
 ## Spatial System and Layout
 
-Layout rhythm follows an 8px grid baseline.
-Sections maintain generous vertical breathing room between 80px and 120px.
-Cards use asymmetric bento proportions to convey engineering breadth without repetitive icon-box templates.
-Images use transparent alpha masks to blend into both dark and light canvases.
-
-## Founding Engineering Team
-
-The founding group consists of four technical disciplines.
-Jayadithya leads distributed systems architecture and emergency incident triage.
-Gurubaravikkram oversees client strategy, cloud scaling, and service level agreements.
-Dinesh Kumar directs clientside architecture, component systems, and performance tuning.
-Hemanth leads containerized infrastructure, automated pipelines, and cloud reliability.
+All header, section, and footer boundaries align to one shared container width (1280px max, 32px desktop gutter, 20px mobile gutter).
+The hero occupies the full initial viewport cleanly without peeking next-section headings.
+The capabilities bento matrix uses a 6-column desktop grid (4+2, 2+4, 3+3) with zero orphan gaps.
+All interactive targets maintain at least a 44x44px hit area across desktop and mobile.
+Transparent cutout assets (Saul portrait ASCII mask, Founders studio cutout, Closing stage cutout) render cleanly across both themes without opaque background rectangles.
 
 ## Microinteractions and Accessibility
 
-Interactive elements deliver feedback within 100 milliseconds.
-Keyboard focus indicators display an offset emerald ring on all active controls.
-Smooth transitions respect the prefers-reduced-motion media query.
-Form elements use native validation with explicit in-modal error and confirmation states.
+Interactive controls respond within 100ms with subtle hover and press feedback and zero neon halo glows.
+Focus rings use 2px solid offset outlines via `:focus-visible`.
+Native `<dialog>` uses `closedby="any"` with pointer drag-safe light dismiss and `overscroll-behavior: contain`.
+Form validation runs on blur (once edited) and submit, showing accessible inline errors under each field.
+All animations honor `prefers-reduced-motion`.
