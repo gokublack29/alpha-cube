@@ -54,10 +54,24 @@
     }
   });
 
-  // --- Mobile Navigation Sheet ---
+  // --- Header Scroll Hairline & Mobile Navigation Sheet ---
+  const siteHeader = document.querySelector('.site-header');
+  const drawer = document.getElementById('mobile-nav-drawer');
+
+  function syncHeaderBorder() {
+    if (!siteHeader) return;
+    const scrolled = window.scrollY > 8;
+    const drawerOpen = drawer ? !drawer.hidden : false;
+    siteHeader.classList.toggle('is-scrolled', scrolled || drawerOpen);
+  }
+
+  if (siteHeader) {
+    syncHeaderBorder();
+    window.addEventListener('scroll', syncHeaderBorder, { passive: true });
+  }
+
   (function initMobileNav() {
     const menuBtn = document.getElementById('mobile-menu-btn');
-    const drawer = document.getElementById('mobile-nav-drawer');
     if (!menuBtn || !drawer) return;
 
     const drawerTargets = drawer.querySelectorAll('a, button');
@@ -67,6 +81,7 @@
       menuBtn.classList.toggle('active', open);
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       menuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      syncHeaderBorder();
     }
 
     menuBtn.addEventListener('click', (e) => {
