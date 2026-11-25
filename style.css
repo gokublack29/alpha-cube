@@ -746,6 +746,15 @@ body {
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 10px 24px rgba(9, 49, 141, 0.12);
 }
 
+[data-theme="light"] .ascii-canvas {
+  background-color: #F4F7FD;
+  border-color: rgba(9, 49, 141, 0.18);
+}
+
+[data-theme="light"] .portrait-card:hover .ascii-canvas {
+  border-color: rgba(9, 49, 141, 0.35);
+}
+
 .status-ascii-pill {
   font-family: var(--font-pixel);
   font-size: 0.72rem;
@@ -1015,6 +1024,47 @@ body {
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(9, 49, 141, 0.2);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 6px 18px rgba(9, 49, 141, 0.08);
+}
+
+[data-theme="light"] .callout-badge {
+  background-color: rgba(9, 49, 141, 0.1);
+  color: var(--brand-accent);
+  border-color: rgba(9, 49, 141, 0.2);
+}
+
+[data-theme="light"] .metric-badge {
+  background-color: rgba(9, 49, 141, 0.1);
+  color: var(--brand-accent);
+}
+
+[data-theme="light"] .tile-accent {
+  background: linear-gradient(135deg, var(--surface-card) 0%, rgba(9, 49, 141, 0.06) 100%);
+  border-color: rgba(9, 49, 141, 0.24);
+}
+
+[data-theme="light"] .box-accent {
+  background-color: rgba(9, 49, 141, 0.1);
+  color: var(--brand-accent);
+  border-color: rgba(9, 49, 141, 0.22);
+}
+
+[data-theme="light"] .tag-alert {
+  background-color: rgba(9, 49, 141, 0.1);
+  color: var(--brand-accent);
+}
+
+[data-theme="light"] .status-ascii-pill {
+  background-color: rgba(9, 49, 141, 0.1);
+  color: var(--brand-accent);
+  border-color: rgba(9, 49, 141, 0.2);
+}
+
+[data-theme="light"] .form-select {
+  color-scheme: light;
+}
+
+[data-theme="light"] .success-icon {
+  background-color: rgba(9, 49, 141, 0.12);
 }
 
 .telemetry-bar {

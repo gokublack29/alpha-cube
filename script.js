@@ -21,6 +21,16 @@
     if (themeToggle) {
       themeToggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
     }
+
+    // Swap theme-dependent images
+    const saulImg = document.getElementById('hero-saul-img');
+    if (saulImg) {
+      saulImg.src = theme === 'light' ? 'assets/saul-light.png' : 'assets/saul-dark.png';
+    }
+    const teamPhoto = document.querySelector('.founders-photo');
+    if (teamPhoto) {
+      teamPhoto.src = theme === 'light' ? 'assets/team-light.png' : 'assets/team-dark.png';
+    }
   }
 
   // Initialize saved theme
@@ -365,12 +375,29 @@
           }
         }
 
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
         if (isCursorActive || isRippleActive) {
           ctx.fillStyle = '#FD91CC';
           ctx.shadowColor = 'rgba(253, 145, 204, 0.7)';
           ctx.shadowBlur = 8 * dpr;
+        } else if (isLight) {
+          // Light theme: dark cobalt highlights, mid-blue midtones, faint shadows
+          if (cell.lum > 0.65) {
+            ctx.fillStyle = '#051029';
+            ctx.shadowColor = 'rgba(5, 16, 41, 0.25)';
+            ctx.shadowBlur = 3 * dpr;
+          } else if (cell.lum > 0.28) {
+            ctx.fillStyle = `rgba(9, 49, 141, ${Math.max(0.4, cell.lum * 1.1)})`;
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+          } else {
+            ctx.fillStyle = `rgba(36, 65, 133, ${Math.max(0.2, cell.lum * 0.9)})`;
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+          }
         } else {
-          // Multitonal palette: white highlights, luminous ice midtones, cobalt shadows
+          // Dark theme: white highlights, luminous ice midtones, cobalt shadows
           if (cell.lum > 0.65) {
             ctx.fillStyle = '#FFFFFF';
             ctx.shadowColor = 'rgba(255, 255, 255, 0.35)';
@@ -435,11 +462,18 @@
 
     window.addEventListener('resize', resizeCanvas);
 
+    // Rebuild grid when image loads (initial + theme swap)
+    img.addEventListener('load', buildAsciiGrid);
     if (img.complete) {
       buildAsciiGrid();
-    } else {
-      img.addEventListener('load', buildAsciiGrid);
     }
+
+    // Re-render on theme change so colors update
+    const observer = new MutationObserver(() => {
+      // Image src changes are handled in setTheme; just re-render with new palette
+      wake();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();
 
   // --- Mobile Floating Liquid Glass Navigation Controller ---
